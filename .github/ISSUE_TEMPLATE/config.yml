@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussion or general question
+    url: https://github.com/abukix/learnix/discussions
+    about: For general questions about my learning path, resource reviews, or study process — please use Discussions.
+  - name: Contact the author
+    url: mailto:me@abukix.dev
+    about: Direct email for anything the above doesn't cover.
