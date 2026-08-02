@@ -707,4 +707,117 @@ def get_area_of_circle(radius):
 
 Because `pi` was declared in the parent "global" scope, it is usable within the `get_area_of_circle()` function.
 
+# CH5: Testing and Debugging
+
+## 5.0 Unit tests
+
+Up until this point, all the coding lessons you've completed have been testing you based on your code's console output (what's printed). For example, a lesson might expect your code (in conjunction with the code we provide) to print something like:
+
+```
+Armor: 2
+Health: 18
+```
+
+If your code prints that exact output, you pass. If it doesn't, you fail.
+
+**A new type of lesson**
+
+Going forward, you'll encounter a new type of lesson: unit tests. A unit test is just an automated program that tests a small "unit" of code. Usually just a function or two.
+
+The editor will have tabs:
+
+- The `main.py` file containing your code.
+- The `main_test.py` file containing the unit tests.
+
+These new unit-test-style lessons will test your code's functionality rather than its output. Our tests will call functions in your code with different arguments, and expect certain return values. If your code returns the correct values, you pass. If it doesn't, you fail.
+
+There are two reasons for this change:
+
+- It's more realistic. In the real world, you'll be writing unit tests and running them against your code to make sure it works as expected.
+- You can run and debug your code with print statements, and leave those print statements in when you submit. Unlike the output-based lessons, you won't have to remove your print statements to pass.
+
+Also, ▶ Run and ▶ Submit work a little differently than before. When you run your code, it only runs some of the tests, but when you submit your code, it runs all of the tests. This is to simulate a production environment with unexpected edge cases and to teach you to think them through. Luckily for you, all of the tests are visible in the `main_test.py` file tab, so be sure to always check them before submitting.
+
+## 5.1 Two lesson types
+
+As we talked about, there are 2 types of coding lessons on Boot.dev:
+
+- Console output lessons
+- Unit-test lessons
+
+**Console output lessons**
+
+- Only 1 file of code, usually with a comment explaining where to write your code.
+- When you "submit" your code, its console output must match the expected output exactly to pass.
+- Debug print statements will cause your code to fail submission, so remove them before submitting.
+
+**Unit-test lessons**
+
+- 2 files of code: `main` and `main_test`. You can read the tests but you can't edit them.
+- When you "submit" your code, the return values of your functions must match the expected values exactly to pass.
+- Console output is ignored, you can leave debug print statements in your code.
+
+**Which is more common?**
+
+Going forward, you'll encounter far more unit-test lessons than console output lessons, but you'll still see both from time to time. Different concepts are better suited to different types of lessons.
+
+## 5.2 Debugging
+
+When you're working as a professional developer, you'll typically write code on your computer and test it by yourself before it's deployed to users.
+
+That first part of the process is called debugging. You write some code, run it, and if it doesn't work, you fix the bugs. You repeat this process until you're confident that your code works as expected.
+
+**Run vs. Submit**
+
+At Boot.dev, the Run button is for debugging. The Submit button mimics the idea of publishing your code for production use.
+
+You should be debugging your code using the Run button. You should be adding `print()` statements to your code to make sure it's doing what you think it's doing at different points in the code.
+
+1. Write a line to calculate a value.
+2. `print()` the value you calculated.
+3. Run the code.
+4. Did it print what you expected? If not, fix it.
+5. Repeat.
+
+You will never lose XP or be penalized on Boot.dev for using the run button. However, there are consequences for submitting broken code, just like there are career consequences for pushing broken code to your users!
+
+**The Submit button will run additional tests**
+
+When you use the Run button, a few tests will run against your code. However, the Submit button will run additional tests that you're not able to debug against. That's what keeps it fun and realistic (it's so hard to know what your users will do with your code!).
+
+## 5.3 Learning effectively
+
+This course is about to get a bit harder. There's no way around it, if programming were a walk in the park everyone would be earning 6 figures as a software engineer. But it's not, and to succeed without getting stuck and frustrated, you need to learn how to learn.
+
+**Process for solving hard coding problems**
+
+1. Read the lesson first! Figure out the examples before writing your own code.
+2. Read the assignment. Understand the goal of the assignment before you start writing code.
+3. Start writing code.
+4. Add `print()` statements. Don't wait until you've written a lot of code to start testing. Add `print()` statements and use the Run button to see if your code is doing what you expect at each step. It's easier to find issues in small bits of code than in large blocks of code.
+   - Keep running, printing, and fixing until you're confident your code is working.
+5. Submit your code. If the assignment you're working on has unit tests, no need to remove your debugging `print()` statements. If the assignment you're working on is testing console output, be sure to remove your `print()` statements before submitting.
+6. Compare your code to the instructor's. You will not be penalized for looking at the solution after you have successfully completed the assignment.
+
+**Additional tidbits**
+
+- Try to use Boots before peeking at the solution. Boots is quite good at giving you pointed hints to help you solve the problem on your own.
+- It's okay to peek at the solution when you're completely stuck every once in a while, but don't make it a habit. If you find that you're always stuck, you should restart the chapter or course to make sure you understand the material.
+- You can reset your code for an assignment with the "reset" ↶ button. For example, maybe you forgot which modifications you made vs which code was left by the instructor.
+- You can reset all your cached code from the settings page. This is useful if you want to restart a course or chapter.
+
+## 5.4 Debugging practice
+
+This walks through how to approach writing code, complete with all the debugging steps taken along the way.
+
+The goal is to write small amounts of code, and then test each bit of code to make sure it's doing what we expect before moving on. Trying to write entire programs at once is a recipe for pain and suffering. The goal is to write a few lines, test them, and then write a few more lines, and repeat until you're done.
+
+This isn't a technique that's unique to beginners. Even senior engineers write code this way.
+
+## 5.5 Stack trace
+
+A stack trace (or "traceback") is a scary-looking error message that the Python interpreter prints to the console when it encounters certain problems. Stack traces are most common (at least for you right now) when you're trying to run invalid Python code.
+
+You need to get used to figuring out scary error messages as a programmer. We might as well start now.
+
 
