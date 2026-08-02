@@ -1167,4 +1167,266 @@ A `1` in binary is the same as `True`, while `0` is `False`. So a bitwise operat
   0111
 ```
 
+# CH7: Comparisons
+
+## 7.0 Comparison operators
+
+When coding it's necessary to be able to compare two values. Boolean logic is the name for these kinds of comparison operations that always result in `True` or `False`.
+
+The operators:
+
+- `<` "less than"
+- `>` "greater than"
+- `<=` "less than or equal to"
+- `>=` "greater than or equal to"
+- `==` "equal to"
+- `!=` "not equal to"
+
+For example:
+
+```python
+5 < 6   # evaluates to True
+5 > 6   # evaluates to False
+5 >= 6  # evaluates to False
+5 <= 6  # evaluates to True
+5 == 6  # evaluates to False
+5 != 6  # evaluates to True
+```
+
+## 7.1 Comparison operator evaluations
+
+When a comparison happens, the result of the comparison is just a boolean value, it's either `True` or `False`.
+
+Take the following two examples:
+
+```python
+is_bigger = 5 > 4
+
+is_bigger = True
+```
+
+In both of the above cases, we're creating a Boolean variable called `is_bigger` with a value of `True`.
+
+Because 5 is greater than 4, `is_bigger` is assigned the value of `True`.
+
+## 7.2 Comparison practice
+
+```python
+car_size = 4
+truck_size = 5
+is_smaller = car_size < truck_size
+# is_smaller is True
+```
+
+## 7.3 If statements
+
+It's often useful to only execute code if a certain condition is met:
+
+```python
+if CONDITION:
+    # do some stuff here
+
+# code after the if block may still run regardless
+```
+
+For example, in this code:
+
+```python
+def show_status(boss_health):
+    if boss_health > 0:
+        print("Ganondorf is alive!")
+        return
+    print("Ganondorf is unalive!")
+```
+
+If `boss_health` is greater than 0, then this will be printed:
+
+```
+Ganondorf is alive!
+```
+
+Otherwise, this will be printed:
+
+```
+Ganondorf is unalive!
+```
+
+Without a `return` in the `if` block, "Ganondorf is unalive" would always be printed:
+
+```python
+def show_status(boss_health):
+    if boss_health > 0:
+        print("Ganondorf is alive!")
+    print("Ganondorf is unalive!")
+```
+
+This code could print both messages:
+
+```
+Ganondorf is alive!
+Ganondorf is unalive!
+```
+
+When you only want code within an `if` block to run, use `return` to exit the function early.
+
+Indentation is what tells Python whether the body of a function or the `if` statement has ended. Don't forget the colon after your `if` statement `:`; it is a required part of the syntax!
+
+## 7.4 If practice
+
+Remember, you can use the `==` operator to check if two values are equal. For example:
+
+```python
+is_equal = 5 == 5
+# is_equal is True
+```
+
+## 7.5 If-else
+
+An `if` statement can be followed by zero or more `elif` (which stands for "else if") statements, which can be followed by zero or one `else` statements.
+
+For example:
+
+```python
+if score > high_score:
+    print("High score beat!")
+elif score > second_highest_score:
+    print("You got second place!")
+elif score > third_highest_score:
+    print("You got third place!")
+else:
+    print("Better luck next time")
+```
+
+First the `if` statement is evaluated. If it is `True` then the `if` statement's body is executed and all the other `elif`s and the `else` are ignored.
+
+If the first `if` is false then the next `elif` is evaluated. Likewise, if it is `True` then its body is executed and the rest are ignored.
+
+If none of the `if` or `elif` statements evaluate to `True` then the final `else` statement will be the only body executed.
+
+## 7.6 If-else practice
+
+Here are some basic rules with if/else blocks.
+
+- You can't have an `elif` or an `else` without an `if`.
+- You can have an `else` without an `elif`.
+
+Remember, to check if two values are the same use the `==` operator.
+
+```python
+are_equal = 5 == 6
+# are_equal is False
+
+are_equal = 6 == 6
+# are_equal is True
+```
+
+**Assignment**
+
+Complete the `check_high_score` function. If the `player_name` matches the high score name, return the string `"high"`. Otherwise, if it's the low scorer, return the string `"low"`. Otherwise, return the string `"neither"`.
+
+## 7.7 Boolean logic
+
+Boolean logic refers to logic dealing with boolean (`True` or `False`) values. For example:
+
+- Dogs must have four legs and weigh less than 100 kilograms. (Both conditions must be true.)
+- Cars are cool if they go faster than 200 MPH, or if they are electric. (At least one condition must be true.)
+
+**Logical operators review**
+
+As we discussed earlier, the logical operators `and` and `or` can be used to perform boolean logic.
+
+**`and` review**
+
+The `and` operator returns `True` if both of the conditions on either side evaluate to `True`:
+
+```python
+def is_dog(num_legs, weight):
+    return num_legs == 4 and weight < 100
+```
+
+Let's go over how this function evaluates the parameters `num_legs=4` and `weight=99`:
+
+```python
+return 4 == 4 and 99 < 100
+
+return True and True
+
+return True
+```
+
+Let's see what would happen with `3` and `98` instead:
+
+```python
+return 3 == 4 and 98 < 100
+
+return False and True
+
+return False
+```
+
+**`or` review**
+
+The `or` operator returns `True` if at least one of the conditions on either side evaluates to `True`:
+
+```python
+def is_car_cool(speed, is_electric):
+    return speed > 200 or is_electric
+```
+
+Let's use a non-electric car that can do 250:
+
+```python
+return 250 > 200 or False
+
+return True or False
+
+return True
+```
+
+## 7.8 Should serve drinks
+
+**Assignment**
+
+In Fantasy Quest, players can go to a town's local pub. Drinking virtual beer refills their stamina!
+
+Complete the function that determines if a bartender should serve drinks to a customer. Only return `True` if all of these conditions apply. If any of these conditions are `False`, return `False`:
+
+- The customer's age is 21 or older.
+- The bartender is working.
+- The time is between 5 and 10 o'clock (inclusive of both 5 and 10).
+
+**Tips: understand the problem**
+
+This assignment tests your ability to think critically by challenging your expectations up to this point. First, understand the problem before rushing to conclusions about the requirements. Then, convert these positive conditions into negatives. Finally, convert them into code.
+
+- If the customer's age is less than 21, return `False`.
+- If the bartender is on break, return `False`.
+- If the time is before 5 or after 10, return `False`. This means 5 and 10 would return `True`.
+- Return `True`.
+
+Why go through the hassle of inverting the logic? These early returns are the whole solution. The alternative is to write a function that is deeply nested and therefore less readable and more confusing than the solution.
+
+```python
+def check_conditions(condition_1, condition_2, condition_3):
+    if condition_1:
+        if not condition_2:
+            if condition_3 > 1:
+                return True
+    return False
+```
+
+## 7.9 If statements don't need a comparison
+
+Where `is_big` is a boolean value, the following statements are identical:
+
+```python
+if is_big:
+    # ...
+
+if is_big == True:
+    # ...
+```
+
+The first option should be preferred due to length; however, the second is more readable. The `== True` is redundant.
+
 
