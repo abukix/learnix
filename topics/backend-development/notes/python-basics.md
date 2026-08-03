@@ -1621,4 +1621,416 @@ for n in range(42):
 
 This code would loop from 0 all the way to 41, but it actually exits early. Once `n * n` is greater than 150, the `break` statement executes, stopping the loop.
 
+# CH9: Lists
+
+## 9.0 Lists
+
+A natural way to organize and store data is in a List. Some languages call them "arrays," but in Python we just call them lists. Think of all the apps you use and how many of the items in the app are organized into lists.
+
+For example:
+
+- An X (formerly Twitter) feed is a list of posts
+- An online store is a list of products
+- The state of a chess game is a list of moves
+- This list is a list of things that are lists
+
+Lists in Python are declared using square brackets, with commas separating each item:
+
+```python
+inventory = ["Iron Breastplate", "Healing Potion", "Leather Scraps"]
+```
+
+Lists can contain items of any data type, in our example above we have a List of strings.
+
+## 9.1 Lists continued
+
+Sometimes when we're manually creating lists it can be hard to read if all the items are on the same line of code. We can declare the list using multiple lines if we want to:
+
+```python
+flower_types = [
+    "daffodil",
+    "rose",
+    "chrysanthemum",
+]
+
+player_ages = [
+    23,
+    18,
+    31,
+    42,
+]
+```
+
+Writing it this way helps with readability and organization, especially if there are many items or if some of the items are too long. Keep in mind this is just a styling change. The code will run correctly either way.
+
+## 9.2 Counting in programming
+
+In the world of programming, counting is a bit strange!
+
+We don't start counting at 1, we start at 0 instead.
+
+**Indexes**
+
+Each item in a list has an index that refers to its spot in the list.
+
+Take the following list as an example:
+
+```python
+names = ["Bob", "Lane", "Alice", "Breanna"]
+```
+
+- Index 0: `Bob`
+- Index 1: `Lane`
+- Index 2: `Alice`
+- Index 3: `Breanna`
+
+## 9.3 Indexing into lists
+
+Now that we know how to create new lists, we need to know how to access specific items in the list.
+
+We access items in a list directly by using their index. Indexes start at 0 (the first item) and increment by one with each successive item. The syntax is as follows:
+
+```python
+best_languages = ["JavaScript", "Go", "Rust", "Python", "C"]
+print(best_languages[1])
+# prints "Go", because index 1 was provided
+```
+
+## 9.4 List length
+
+The length of a List can be calculated using the `len()` function. It takes an iterable (such as a string or list) and returns the number of items present.
+
+```python
+fruits = ["apple", "banana", "pear"]
+length = len(fruits)
+# 3 items in fruits
+
+len("supercalifragilisticexpialidocious")
+# 34 characters
+```
+
+Don't be fooled by the fact that the length is not equal to the index of the last element. In fact, it will always be one greater because the starting index is zero!
+
+## 9.5 List updates
+
+We can also change the item that exists at a given index. For example, we can change `Leather` to `Leather Armor` in the inventory list in the following way:
+
+```python
+inventory = ["Leather", "Iron Ore", "Healing Potion"]
+inventory[0] = "Leather Armor"
+# inventory: ['Leather Armor', 'Iron Ore', 'Healing Potion']
+```
+
+## 9.6 Appending in Python
+
+It's common to create an empty list then fill it with values using a loop. We can add values to the end of a list using the `.append()` method:
+
+```python
+cards = []
+cards.append("nvidia")
+cards.append("amd")
+# the cards list is now ['nvidia', 'amd']
+```
+
+## 9.7 Pop values
+
+`.pop()` is the opposite of `.append()`. Pop removes the last element from a list and returns it for use. For example:
+
+```python
+vegetables = ["broccoli", "cabbage", "kale", "tomato"]
+last_vegetable = vegetables.pop()
+# vegetables = ['broccoli', 'cabbage', 'kale']
+# last_vegetable = 'tomato'
+```
+
+## 9.8 Counting the items in a list
+
+Remember that we can iterate over all the elements in a list using a loop. For example, the following code will print each item in the `sports` list.
+
+```python
+for i in range(0, len(sports)):
+    print(sports[i])
+```
+
+## 9.9 No-index syntax
+
+Python has an elegant syntax for iterating directly over the items in a list without worrying about index numbers. If you don't need the index number you can use the following syntax:
+
+```python
+trees = ["oak", "pine", "maple"]
+for tree in trees:
+    print(tree)
+# Prints:
+# oak
+# pine
+# maple
+```
+
+`tree`, the variable declared using the `in` keyword, directly accesses the value in the list rather than the index of the value. If we don't need to update the item and only need to access its value then this is a more clean way to write the code.
+
+## 9.10 Find an item in a list
+
+Practice the "no-index" or "no-range" syntax:
+
+```python
+for fruit in fruits:
+    print(fruit)
+```
+
+## 9.11 Find max
+
+**Infinity**
+
+The built-in `float()` function can create a numeric floating point value of negative infinity. Instead of initializing a base value like `0` or `-100000`, we can use `float("-inf")` to represent negative infinity. Because every value will be greater than negative infinity, we can use it as a starting point to help us achieve our goal of finding the max value.
+
+```python
+negative_infinity = float("-inf")
+positive_infinity = float("inf")
+```
+
+## 9.12 Find the remainder
+
+The modulo operator can be used to find the remainder after a division operation. For example, 7 modulo 2 would be 1, because 2 can be multiplied evenly into 7 at most 3 times:
+
+```
+2 * 3 = 6
+```
+
+Then there is 1 remaining to get from 6 to 7.
+
+```
+7 - 6 = 1
+```
+
+The modulo operator is the percent sign: `%`. It's important to recognize modulo is not a percentage though! That's just the symbol we're using.
+
+```python
+remainder = 8 % 3
+# remainder = 2
+```
+
+An odd number is a number that when divided by 2, the remainder is not 0.
+
+## 9.13 Slicing lists
+
+Python makes it easy to slice and dice lists to work only with the section you care about. One way to do this is to use the simple slicing operator, which is just a colon `:`.
+
+With this operator, you can specify where to start and end the slice, and how to step through the original list. List slicing returns a new list from the existing list.
+
+The syntax is as follows:
+
+```python
+my_list[start:stop:step]
+```
+
+For example:
+
+```python
+scores = [50, 70, 30, 20, 90, 10, 50]
+# Display list
+print(scores[1:5:2])
+# Prints [70, 20]
+```
+
+The above uses a start of 1, a stop of 5 (not included), and a step of 2. All of the sections are optional.
+
+**Omitting sections**
+
+You can also omit various sections ("start," "stop," or "step"). For example, `numbers[:3]` means "get all items from the start up to (but not including) index 3." `numbers[3:]` means "get all items from index 3 to the end."
+
+```python
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+numbers[:3]  # Gives [0, 1, 2]
+numbers[3:]  # Gives [3, 4, 5, 6, 7, 8, 9]
+```
+
+**Using only the "step" section**
+
+```python
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+numbers[::2]  # Gives [0, 2, 4, 6, 8]
+```
+
+**Negative indices**
+
+Negative indices count from the end of the list. For example, `numbers[-1]` gives the last item in the list, `numbers[-2]` gives the second last item, and so on.
+
+```python
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+numbers[-3:]  # Gives [7, 8, 9]
+```
+
+## 9.14 List operations — concatenate
+
+Concatenating two lists (smushing them together) is easy in Python, just use the `+` operator.
+
+```python
+total = [1, 2, 3] + [4, 5, 6]
+print(total)
+# Prints: [1, 2, 3, 4, 5, 6]
+```
+
+## 9.15 List operations — contains
+
+Checking whether a value exists in a list or not is also really easy in Python: just use the `in` keyword to check for presence, or `not in` to check for absence.
+
+```python
+fruits = ["apple", "orange", "banana"]
+print("banana" in fruits)
+# Prints: True
+
+fruits = ["apple", "orange", "banana"]
+print("banana" not in fruits)
+# Prints: False
+```
+
+## 9.16 List deletion
+
+Python has a built-in keyword `del` that deletes items from objects. In the case of a list, you can delete specific indexes or entire slices.
+
+```python
+nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# delete the fourth item
+del nums[3]
+print(nums)
+# Output: [1, 2, 3, 5, 6, 7, 8, 9]
+
+# delete the second item up to (but not including) the fourth item
+nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+del nums[1:3]
+print(nums)
+# Output: [1, 4, 5, 6, 7, 8, 9]
+
+# delete all elements
+nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+del nums[:]
+print(nums)
+# Output: []
+```
+
+## 9.17 Tuples
+
+Tuples are collections of data that are ordered and unchangeable. You can think of a tuple as a List with a fixed size. Tuples are created with round brackets:
+
+```python
+my_tuple = ("this is a tuple", 45, True)
+print(my_tuple[0])
+# this is a tuple
+print(my_tuple[1])
+# 45
+print(my_tuple[2])
+# True
+```
+
+While it's typically considered bad practice to store items of different types in a List, it's not a problem with Tuples. Because they have a fixed size, it's easy to keep track of which indexes store which types of data.
+
+Tuples are often used to store very small groups (like 2 or 3 items) of data. For example, you might use a tuple to store a dog's name and age.
+
+```python
+dog = ("Fido", 4)
+```
+
+There is a special case for creating single-item tuples. You must include a comma so Python knows it's a tuple and not regular parentheses:
+
+```python
+dog = ("Fido",)
+```
+
+Because Tuples hold their data, multiple tuples can be stored within a list. Similar to storing other data in lists, each tuple within the list is separated by a comma. When accessing a list of tuples, the first index selects which tuple you want to access, the second selects a value within that tuple.
+
+```python
+my_tuples = [
+    ("this is the first tuple in the list", 45, True),
+    ("this is the second tuple in the list", 21, False),
+]
+print(my_tuples[0][0])  # this is the first tuple in the list
+print(my_tuples[0][1])  # 45
+print(my_tuples[1][0])  # this is the second tuple in the list
+print(my_tuples[1][2])  # False
+```
+
+## 9.18 Tuple unpacking
+
+You can easily assign the values of a tuple to variables using unpacking.
+
+```python
+dog = ("Fido", 4)
+dog_name, dog_age = dog
+print(dog_name)
+# Fido
+print(dog_age)
+# 4
+```
+
+When you return multiple values from a function, you're actually returning a tuple.
+
+## 9.19 First element
+
+**Assignment**
+
+Let's keep improving our inventory system. Complete the `get_first_item` function. It takes a list as input.
+
+- Return the first element from the `items` list.
+- If `items` is empty, return the string `"ERROR"` instead.
+
+You can check if a list is empty by checking its length.
+
+## 9.20 Reverse list
+
+**Assignment**
+
+Some of our players would like to view their inventories in reverse order.
+
+Using a loop, let's write a function that takes a list as an input and returns a new list except all the items are in reverse order.
+
+For example:
+
+```
+[1, 2, 3] -> [3, 2, 1]
+['a', 'b', 'c', 'd'] -> ['d', 'c', 'b', 'a']
+```
+
+**Tip**
+
+The Python `range` function is very useful when working with lists. It allows you to choose where to start, stop, and how to step over a list.
+
+- Remember, function arguments are separated by commas inside the parentheses. For `range` the function signature is `range(start, stop, step)`. Don't forget you can use negative values for these arguments!
+- It's common to nest built-ins: you can pass `len(...)` directly to `range(...)`. For example, `range(len(items))` iterates over indices 0 through `len(items) - 1`.
+- Where should you start your loop from? Could `len()` be useful at giving `range` a starting index?
+- Where should you end your loop?
+- What should the step be? In other words, how should you increment `i` in each iteration of the loop?
+
+## 9.21 Filter messages
+
+**Debugging tip**
+
+Do not try to write a complex function all at once. Start with the outermost loop and work your way inward. Add extra `print()` statements and run your code often to make sure it's doing what you expect. Just make sure to remove the extra `print()` statements before submitting your code.
+
+Running your code often to make sure each line is doing what you expect is called "debugging." All programmers, even seasoned professionals, break large problems down into small ones that they can debug line by line.
+
+Because we're working with strings that need to be converted to lists and vice versa, here are a couple helpful Python methods we can use to make our lives much easier.
+
+**Split a string into a list of words**
+
+The `.split()` method in Python is called on a string and returns a list by splitting the string based on a given delimiter. If no delimiter is provided, it will split the string on whitespace. Here's a quick example:
+
+```python
+message = "hello there sam"
+words = message.split()
+print(words)
+# Prints: ["hello", "there", "sam"]
+```
+
+**Join a list of strings into a single string**
+
+The `.join()` method is called on a delimiter (what goes between all the words in the list), and takes a list of strings as input.
+
+```python
+list_of_words = ["hello", "there", "sam"]
+sentence = " ".join(list_of_words)
+print(sentence)
+# Prints: "hello there sam"
+```
+
 
