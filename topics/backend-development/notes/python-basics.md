@@ -1429,4 +1429,196 @@ if is_big == True:
 
 The first option should be preferred due to length; however, the second is more readable. The `== True` is redundant.
 
+# CH8: Loops
+
+## 8.0 Loops
+
+Loops are a programmer's best friend. Loops allow us to do the same operation multiple times without having to write it explicitly each time.
+
+For example, let's pretend I want to print the numbers 0-9. I could do this:
+
+```python
+print(0)
+print(1)
+print(2)
+print(3)
+print(4)
+print(5)
+print(6)
+print(7)
+print(8)
+print(9)
+```
+
+Even so, it would save me a lot of time typing to use a loop. Especially if I wanted to do the same thing one thousand or one million times.
+
+A "for loop" in Python is written like this:
+
+```python
+for i in range(0, 10):
+    print(i)
+```
+
+`i` is a variable that takes on each value from 0 to 9, one at a time. In English, the code says:
+
+1. Start with `i` equals 0. (`i in range(0)`)
+2. If `i` is greater than or equal to 10 (`range(0, 10)`), exit the loop. Else:
+   - Print `i` to the console. (`print(i)`)
+   - Add 1 to `i`. (`range` defaults to incrementing by 1)
+   - Go back to step 2.
+
+The result is that the numbers 0-9 are logged to the console in order.
+
+The numbers `a` and `b` in `range(a, b)` are inclusive of `a` and exclusive of `b`. So `range(0, 10)` includes 0 but not 10.
+
+**Whitespace matters in Python!**
+
+The body of a for-loop must be indented, otherwise you'll get a syntax error.
+
+## 8.1 Range continued
+
+The `range()` function we've been using in our for loops actually has an optional 3rd parameter: the "step."
+
+```python
+for i in range(0, 10, 2):
+    print(i)
+# prints:
+# 0
+# 2
+# 4
+# 6
+# 8
+```
+
+The "step" parameter determines how much to add to `i` in each iteration of the loop. You can even go backwards:
+
+```python
+for i in range(3, 0, -1):
+    print(i)
+# prints:
+# 3
+# 2
+# 1
+```
+
+## 8.2 Sum game
+
+Remember you can use in-place operators to increase or decrease a variable by any amount.
+
+```python
+number_of_enemies = 10
+number_of_enemies += 2
+# number_of_enemies is 12
+
+number_of_enemies = 10
+number_of_enemies -= 2
+# number_of_enemies is 8
+```
+
+## 8.3 While
+
+Python has another type of loop, the while loop. It's a loop that continues while a condition remains `True`. The syntax is simple:
+
+```python
+while 1:
+    print("1 evaluates to True")
+
+# prints:
+# 1 evaluates to True
+# 1 evaluates to True
+# (...continuing)
+```
+
+The example above is hardcoded to continue forever, creating an infinite loop. Typically, a while loop condition is a comparison or variable, and it determines when the loop ends:
+
+```python
+num = 0
+while num < 3:
+    num += 1
+    print(num)
+
+# prints:
+# 1
+# 2
+# 3
+# (the loop stops when num >= 3)
+```
+
+## 8.4 Continue statement
+
+Sometimes, while looping through a sequence, you may find items that you want to skip. Python (like many programming languages) provides a way to do this: the `continue` statement.
+
+`continue` means "go directly to the next iteration of this loop." Whatever else was supposed to happen in the current iteration is skipped.
+
+Let's say we want to print all the numbers from 1 to 50, but skip every 7th number. We can use `continue` to do this, by keeping track of a counter:
+
+```python
+# Remember, `range` is inclusive of the start, but exclusive of the end
+counter = 0
+for number in range(1, 51):
+    counter = counter + 1
+
+    if counter == 7:
+        counter = 0  # Reset the counter
+        continue  # Skip this number
+
+    print(number)
+```
+
+What we'll see printed are all the numbers from 1 to 50, except for 7, 14, 21, 28, 35, 42, and 49.
+
+**Avoiding work**
+
+A `continue` statement immediately halts the current iteration and jumps to the next one, which saves the program from doing unnecessary work.
+
+For example, if we're calculating square roots, we might want to skip negative numbers. `continue` lets us move on to the next number without wasting any time:
+
+```python
+for number in range(-5, 5):
+    if number < 0:
+        continue  # Skip negatives
+
+    print(f"The square root of {number} is {number**0.5}")
+```
+
+This would print:
+
+```
+The square root of 0 is 0.0
+The square root of 1 is 1.0
+The square root of 2 is 1.4142135623730951
+The square root of 3 is 1.7320508075688772
+The square root of 4 is 2.0
+```
+
+Using `continue` to avoid pointless work can make your code run faster, which is especially helpful if the loop includes time-consuming computations.
+
+## 8.5 Break statement
+
+We can use `continue` to skip to the next iteration in a loop, but what if we want to exit the loop entirely? That's where the `break` statement comes in.
+
+```python
+for n in range(42):
+    print(f"{n} * {n} = {n * n}")
+    if n * n > 150:
+        break
+
+# 0 * 0 = 0
+# 1 * 1 = 1
+# 2 * 2 = 4
+# 3 * 3 = 9
+# 4 * 4 = 16
+# 5 * 5 = 25
+# 6 * 6 = 36
+# 7 * 7 = 49
+# 8 * 8 = 64
+# 9 * 9 = 81
+# 10 * 10 = 100
+# 11 * 11 = 121
+# 12 * 12 = 144
+# 13 * 13 = 169
+```
+
+This code would loop from 0 all the way to 41, but it actually exits early. Once `n * n` is greater than 150, the `break` statement executes, stopping the loop.
+
 
