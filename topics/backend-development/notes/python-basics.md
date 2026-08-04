@@ -2033,4 +2033,172 @@ print(sentence)
 # Prints: "hello there sam"
 ```
 
+# CH10: Dictionaries
+
+## 10.0 Dictionaries
+
+Dictionaries in Python are used to store data values in key -> value pairs. Dictionaries are a great way to store groups of information.
+
+```python
+# use curly braces
+# add key-value pairs
+car = {
+    "brand": "Toyota",
+    "model": "Camry",
+    "year": 2019,
+}
+```
+
+Here the `car` variable is assigned to a dictionary `{}` containing the keys `brand`, `model` and `year`. The keys' corresponding values are `Toyota`, `Camry` and `2019`.
+
+## 10.1 Duplicate keys
+
+Because dictionaries rely on unique keys, you can't have two of the same key in the same dictionary. If you try to use the same key twice, the first value will simply be overwritten.
+
+```python
+car = {
+    "brand": "Toyota",
+    "brand": "Honda",
+}
+print(car)
+# {'brand': 'Honda'}
+```
+
+## 10.2 Accessing dictionary values
+
+Dictionary elements must be accessible somehow in code, otherwise they wouldn't be very useful.
+
+A value is retrieved from a dictionary by specifying its corresponding key in square brackets. The square brackets look similar to indexing into a list.
+
+```python
+car = {"make": "Toyota", "model": "Camry"}
+print(car["make"])
+# Prints: Toyota
+```
+
+## 10.3 Setting dictionary values
+
+You don't need to create a dictionary with values already inside. It is common to create a blank dictionary then populate it later using dynamic values. The syntax is the same as getting data out of a key, just use the assignment operator (`=`) to give that key a value.
+
+```python
+planets = {}
+planets["Earth"] = True
+planets["Pluto"] = False
+print(planets["Pluto"])
+# Prints False
+```
+
+## 10.4 Updating dictionary values
+
+If you try to set the value of a key that already exists, you'll end up just updating the value of that key.
+
+```python
+planets = {
+    "Pluto": True,
+}
+planets["Pluto"] = False
+print(planets["Pluto"])
+# Prints False
+```
+
+## 10.5 Deleting dictionary values
+
+You can delete existing keys using the `del` keyword.
+
+```python
+names_dict = {"jack": "bronson", "jill": "mcarty", "joe": "denver"}
+
+del names_dict["joe"]
+
+print(names_dict)
+# Prints: {'jack': 'bronson', 'jill': 'mcarty'}
+```
+
+## 10.6 Deleting keys that don't exist
+
+Notice that if you try to delete a key that doesn't exist, you'll get an error.
+
+```python
+names_dict = {"jack": "bronson", "jill": "mcarty", "joe": "denver"}
+
+del names_dict["unknown"]
+# ERROR HERE, key doesn't exist
+```
+
+## 10.7 Checking for existence
+
+If you're unsure whether a key exists in a dictionary, use the `in` keyword.
+
+```python
+cars = {"ford": "f150", "toyota": "camry"}
+
+print("ford" in cars)
+# Prints: True
+
+print("gmc" in cars)
+# Prints: False
+```
+
+## 10.8 Iterating over a dictionary
+
+We can iterate over a dictionary's keys using the same no-index syntax we used to iterate over the values in a list. With access to the dictionary's keys, we also have access to their corresponding values.
+
+```python
+fruit_sizes = {"apple": "small", "banana": "large", "grape": "tiny"}
+
+for name in fruit_sizes:
+    size = fruit_sizes[name]
+    print(f"name: {name}, size: {size}")
+
+# name: apple, size: small
+# name: banana, size: large
+# name: grape, size: tiny
+```
+
+We could have just as easily set the `name` variable to `key` or simply `k`.
+
+## 10.9 Ordered or unordered?
+
+As of Python version 3.7, dictionaries are ordered. In Python 3.6 and earlier, dictionaries were unordered.
+
+Because dictionaries are ordered, the items have a defined order, and that order will not change.
+
+Unordered means that the items do not have a defined order.
+
+The takeaway is that if you're on Python 3.7 or later, you'll be able to iterate over dictionaries in the same order every time.
+
+## 10.10 Quest status
+
+Fantasy Quest stores each character's progress in a nested dictionary structure. Here's what it looks like:
+
+```python
+{
+    "character_name": "Kaladin",
+    "quests": {
+        "bridge_run": {
+            "status": "In Progress",
+        },
+        "talk_to_syl": {
+            "status": "Completed",
+        },
+    },
+}
+```
+
+The values can change of course, but the structure will always be the same. For example, another character's progress might look like this:
+
+```python
+{
+    "character_name": "Shallan",
+    "quests": {
+        "bridge_run": {
+            "status": "Completed",
+        },
+        "talk_to_syl": {
+            "status": "In Progress",
+        },
+    },
+}
+```
+
 
