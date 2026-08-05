@@ -56,3 +56,9 @@ Maintained by **JC Abucay**, [@abukix](https://github.com/abukix). Notes are dra
 ## License
 
 Content is licensed under [**CC BY 4.0**](LICENSE). You're free to use, share, and adapt it, as long as you give credit.
+
+## 🤖 AI Assisted Development
+
+This project is open-source and maintained by a human, but it heavily leverages
+**Claude Code** as an AI development assistant to accelerate scaffolding,
+refactoring, and testing. All code is human-reviewed and verified before merging.
