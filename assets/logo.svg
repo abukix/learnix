@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150" fill="none" role="img" aria-label="learnix — open book mark">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="150" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a855f7"/>
+      <stop offset="0.5" stop-color="#ec4899"/>
+      <stop offset="1" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="150" height="150" rx="24" fill="#0a0a0f"/>
+
+  <!-- left page -->
+  <path d="M75 52 C68 48 55 46 45 48 C38 49 34 53 34 58 L34 96 C34 100 37 102 42 101 C52 99 65 99 75 102 Z" fill="url(#brand)"/>
+  <!-- right page -->
+  <path d="M75 52 C82 48 95 46 105 48 C112 49 116 53 116 58 L116 96 C116 100 113 102 108 101 C98 99 85 99 75 102 Z" fill="url(#brand)"/>
+  <!-- spine crease -->
+  <line x1="75" y1="52" x2="75" y2="101" stroke="#0a0a0f" stroke-width="2.5"/>
+</svg>

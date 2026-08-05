@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="learnix" width="358">
-
-<br>
+<img src="assets/logo.svg" alt="learnix open book mark" width="120">
 
 **A living archive of how I level up in cloud, DevOps, and platform engineering, in the open.**
 
