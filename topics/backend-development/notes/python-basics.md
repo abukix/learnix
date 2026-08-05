@@ -2201,4 +2201,70 @@ The values can change of course, but the structure will always be the same. For 
 }
 ```
 
+# CH11: Sets
+
+## 11.0 Sets
+
+Sets are like Lists, but they are unordered and they guarantee uniqueness. Only ONE of each value can be in a set.
+
+```python
+fruits = {"apple", "banana", "grape"}
+print(type(fruits))
+# Prints: <class 'set'>
+
+print(fruits)
+# Prints: {'banana', 'grape', 'apple'}
+```
+
+**Add values**
+
+You can `.add()` values to a set. Think of `.add()` like `.append()` but for sets!
+
+```python
+fruits = {"apple", "banana", "grape"}
+fruits.add("pear")
+print(fruits)
+# Prints: {'pear', 'banana', 'grape', 'apple'}
+```
+
+No error will be raised if you add an item already in the set, and the set will remain unchanged.
+
+**An empty set**
+
+Because the empty bracket `{}` syntax creates an empty dictionary, to create an empty set, you need to use the `set()` function.
+
+```python
+fruits = set()
+fruits.add("pear")
+print(fruits)
+# Prints: {'pear'}
+```
+
+**Set iteration**
+
+```python
+fruits = {"apple", "banana", "grape"}
+for fruit in fruits:
+    print(fruit)
+    # Prints:
+    # banana
+    # grape
+    # apple
+```
+
+Note: Sets are unordered, so the order of iteration is not guaranteed.
+
+## 11.1 Set subtraction
+
+You can use some of the "normal" mathematical operations on sets. For example, you can subtract one set from another. It removes all the values in the second set from the first set.
+
+```python
+set1 = {"apple", "banana", "grape"}
+set2 = {"apple", "banana"}
+set3 = set1 - set2
+
+print(set3)
+# Prints: {'grape'}
+```
+
 
