@@ -2,6 +2,8 @@
 
 <img src="assets/logo.svg" alt="learnix open book mark" width="120">
 
+# `learnix`
+
 **A living archive of how I level up in cloud, DevOps, and platform engineering, in the open.**
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg)](LICENSE)
