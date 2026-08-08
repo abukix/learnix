@@ -2638,3 +2638,29 @@ def number_sum(n):
     return sum(range(1, n + 1))
 ```
 
+## 14.2 Find Min
+
+In this problem you'll need a way to represent the largest possible number: infinity. In Python, you can use this constant to represent positive infinity:
+
+```python
+my_infinity: float = float("inf")
+```
+
+Write a function called `find_min()` that finds the smallest number in a list. If the list is empty, return `float("inf")`. For example:
+
+```
+find_min([1, 3, -1, 2]) -> -1
+find_min([18, 3, 7, 2]) -> 2
+```
+
+Do not use the built-in `min()` function.
+
+```python
+def find_min(nums: list[int]) -> float:
+    smallest: float = float("inf")
+    for num in nums:
+        if num < smallest:
+            smallest = num
+    return smallest
+```
+
