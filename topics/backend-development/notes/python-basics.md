@@ -2616,3 +2616,5 @@ def get_prepared_spell(has_spell: bool) -> str | None:
     return None
 ```
 
+# CH14: Practice
+
