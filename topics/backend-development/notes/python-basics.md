@@ -2733,3 +2733,27 @@ def factorial(n: int) -> int:
     return result
 ```
 
+## 14.5 Area Sum
+
+The area of a rectangle is calculated by multiplying its height and width. For example, the area of a rectangle with a height of 3 and a width of 5 is:
+
+```
+3 * 5 = 15
+```
+
+Complete the `area_sum()` function. It accepts a list of rectangles, where each rectangle is a dictionary that has the following structure:
+
+```python
+rectangle: dict[str, int] = {"height": 5, "width": 6}
+```
+
+The function should calculate the area of each rectangle and return the sum of all the areas.
+
+```python
+def area_sum(rectangles: list[dict[str, int]]) -> int:
+    total: int = 0
+    for rectangle in rectangles:
+        total += rectangle["height"] * rectangle["width"]
+    return total
+```
+
