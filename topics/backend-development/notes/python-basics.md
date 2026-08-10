@@ -2757,3 +2757,44 @@ def area_sum(rectangles: list[dict[str, int]]) -> int:
     return total
 ```
 
+## 14.6 Join Strings
+
+The `+` operator in Python can be used to concatenate (smoosh) strings together. For example:
+
+```python
+print("hello" + " " + "world")
+# hello world
+
+author: str = "Tolkien"
+message: str = "The " + "world never deserved " + author
+print(message)
+# The world never deserved Tolkien
+```
+
+Complete the `join_strings()` function. It takes a list of strings and returns a new single string.
+
+The new string is the concatenation of all the input strings from the list end-to-end, in order, with a comma between them. If the list is empty, return an empty string. For example:
+
+```python
+string_list: list[str] = ["Annie", "Reiner", "Bertholdt"]
+joined_string: str = join_strings(string_list)
+print(joined_string)
+# "Annie,Reiner,Bertholdt"
+```
+
+Do not use the built-in `.join()` method... we're trying to learn how this works manually.
+
+Tips:
+- The output string should not have a comma at the beginning or the end.
+- You can use negative indexes to slice strings (e.g. `string[:-2]`) just like you can with lists.
+
+```python
+def join_strings(strings: list[str]) -> str:
+    if not strings:
+        return ""
+    result: str = ""
+    for s in strings:
+        result += s + ","
+    return result[:-1]
+```
+
