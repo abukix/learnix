@@ -25,6 +25,7 @@ If you're learning the same tools, treat this as a map: what's worth your time, 
 | Section | What's inside |
 |---------|---------------|
 | **[Topics](topics/)** | Notes organized by subject: the concepts, distilled into my own words. |
+| **[Sandbox](sandbox/)** | Self-designed practice projects that turn a topic's fundamentals into muscle memory. |
 | **[Certifications](certifications/)** | Study plans, practice logs, and post-exam retros for the certs I chase. |
 | **[Resource ledger](resources/)** | Every course and book I've used, with an honest rating and whether it was worth it. |
 | **[Learning log](log/)** | An optional running timeline of what I'm working through. |
