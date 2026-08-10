@@ -2798,3 +2798,52 @@ def join_strings(strings: list[str]) -> str:
     return result[:-1]
 ```
 
+## 14.7 Unit Tests
+
+Boot.dev provides a custom test harness for each lesson (`main_test.py`) instead of a library like `pytest` or `unittest`. It's still useful to know how to write your own unit tests from scratch.
+
+Given a read-only, almost correct `avg_luck_boost` function:
+
+```python
+luck_boosts: list[int] = [5, 3, 10]
+avg_boost: float = avg_luck_boost(luck_boosts)
+print(avg_boost)  # 6.0
+```
+
+All the existing tests pass, but there's an uncovered edge case: an empty `luck_boosts` list causes a `ZeroDivisionError` because the function divides by `len(luck_boosts)`.
+
+```python
+luck_boosts: list[int] = []
+avg_boost: float = avg_luck_boost(luck_boosts)  # ZeroDivisionError
+```
+
+The desired behavior is for the function to return `0.0` when the input list is empty. Add a test case to `run_cases` in `test_cases.py` to check for this behavior:
+
+```python
+run_cases = [
+    # ...existing cases...
+    {
+        "luck_boosts": [],
+        "expected_avg": 0.0,
+    },
+]
+```
+
+## 14.8 Fix a Failing Test
+
+This is an example of test-driven development (TDD):
+
+1. Stub out a function.
+2. Write tests that expect the correct behavior of that function.
+3. Run the tests (they should fail).
+4. Implement the function and keep updating it until it passes the tests.
+
+With the empty-list test case from 14.7 in place and failing, fix `avg_luck_boost` in `main.py` so it returns `0.0` for an empty list instead of dividing by zero:
+
+```python
+def avg_luck_boost(luck_boosts: list[int]) -> float:
+    if not luck_boosts:
+        return 0.0
+    return sum(luck_boosts) / len(luck_boosts)
+```
+
