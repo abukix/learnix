@@ -1,5 +1,5 @@
 ---
-topic: Backend Development
+topic: Python
 source: boot.dev
 date: 2026-08-02
 status: seed   # seed | growing | evergreen

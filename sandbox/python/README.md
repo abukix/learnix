@@ -2,7 +2,7 @@
 
 A 12-day evolving RPG-themed CLI project, built to make Python fundamentals stick before moving on to Linux. Each day adds one concept and leans on whatever the project already has — no throwaway scripts, no clean slate.
 
-Companion to the boot.dev course notes in [`topics/backend-development/notes/python-basics.md`](../../topics/backend-development/notes/python-basics.md); this is where those concepts get exercised, not just written down.
+Companion to the boot.dev course notes in [`topics/python/notes/python-basics.md`](../../topics/python/notes/python-basics.md); this is where those concepts get exercised, not just written down.
 
 ## Progress
 

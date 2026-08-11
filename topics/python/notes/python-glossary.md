@@ -1,5 +1,5 @@
 ---
-topic: Backend Development
+topic: Python
 source: Party Manager challenge (self-designed)
 date: 2026-08-11
 status: growing
