@@ -12,3 +12,5 @@
 ## Notes
 
 - [Python basics](notes/python-basics.md)
+- [Python glossary](notes/python-glossary.md)
+- [Command line basics](notes/command-line-basics.md)
