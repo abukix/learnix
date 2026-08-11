@@ -11,6 +11,18 @@ Quick-recall definitions built while working through the Party Manager project (
 
 ## Day 1 — Character sheet
 
+### Variable
+
+A named reference to a value stored in memory, created the moment you assign something to it (`name = "JC"`). Python is dynamically typed, so a variable isn't locked to the type it started with — the same name can be reassigned to a completely different type later, though doing so on purpose is usually a sign something's off.
+
+### Type hint (annotation)
+
+Optional syntax (`name: str = "JC"`, or `-> str` on a function) that documents the intended type of a variable, parameter, or return value. Not enforced by Python at runtime — the program will still run even if you assign a mismatched value — but tools like mypy or your editor read hints to catch type mismatches before the code ever executes.
+
+### f-string
+
+A string literal prefixed with `f` (`f"{name} | Lvl {level}"`) that lets you embed expressions directly inside `{}` braces; each one is evaluated and converted to text inline when the string is built. Whatever type the expression is (`int`, `bool`, `float`, ...), the result of the whole f-string is always a plain `str` — which is exactly why a function returning one should be type-hinted `-> str`, not a union of every type used inside it.
+
 ### `__name__`
 
 A variable Python automatically sets on every module the instant it's loaded, before any of that module's own code runs. Its value is `"__main__"` if the file was executed directly, or the module's filename (no extension, no dunders) if it was imported by another file. You never assign it yourself.
