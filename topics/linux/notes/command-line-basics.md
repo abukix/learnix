@@ -32,3 +32,25 @@ But to get pedantic, the "terminal" is just one specific part of that program. H
 These days, when we say "terminal," we really mean "terminal emulator." A terminal emulator is a program that emulates a physical terminal, letting you type commands into a window on your computer.
 
 Which commands you're able to use isn't determined by the terminal emulator, but by the shell (covered later). The terminal emulator is just responsible for drawing text on the screen and processing your keystrokes.
+
+## 1.2 What Is a Shell?
+
+If the terminal is just the program that lets you type commands and displays their output, something else has to actually run those commands. That something is the shell.
+
+Shells do a lot of things, but their main job is to interpret the commands you type and execute them.
+
+**REPL**
+
+Shells are often called "REPLs." REPL stands for:
+
+- **R**ead
+- **E**val (evaluate)
+- **P**rint
+- **L**oop
+
+In other words, a shell is a program that:
+
+1. Reads the command you type
+2. Evaluates it, usually by running another program on your computer
+3. Prints the output of that command
+4. Gives you a new prompt so you can repeat the cycle
