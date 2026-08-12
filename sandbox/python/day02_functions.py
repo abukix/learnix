@@ -8,16 +8,12 @@ Wrap Day 1 into two functions:
 describe_character must NOT print — it returns the formatted line;
 the caller prints it.
 """
+def create_character(name, hp, level, luck) -> dict:
+    return {"name": name, "hp": hp, "level": level, "luck": luck}
 
 
-def create_character(name, hp, level, luck):
-    # TODO: build and return the character dict
-    pass
-
-
-def describe_character(character):
-    # TODO: return the formatted status line
-    pass
+def describe_character(character) -> str:
+    return f"{character["name"]} | Lvl {character["level"]} | HP: {character["hp"]} | Luck: {character["luck"]}"
 
 
 if __name__ == "__main__":
