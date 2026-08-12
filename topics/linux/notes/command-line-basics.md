@@ -71,3 +71,41 @@ A graphical user interface (GUI) is the mouse-and-icons style of interaction mos
 - **Slower** — once you know the commands, typing them beats clicking through menus.
 - **Less reproducible** — commands can be copy-pasted as exact instructions, with no dependency on screen size or UI layout.
 - **Not automatable** — it's easy to write code that manipulates text, much harder to write code that manipulates a GUI.
+
+## 1.4 Variables
+
+Once working on a local machine, the shell in play depends on the OS:
+
+- Ubuntu on WSL → probably Bash
+- macOS → probably Zsh
+- Full Linux → whatever was chosen at setup
+
+For this course, Bash and Zsh are treated as basically interchangeable. The in-browser shell is an in-memory Bash shell (or as close as a browser can get).
+
+Both Bash and Zsh are shells, but they're also full programming languages — variables, functions, loops, and more. In practice though, shell languages are optimized for running other programs and writing small scripts, not for building large applications.
+
+**Creating a variable**
+
+```bash
+name="Lane"
+```
+
+No spaces around the `=` — `name`, the assignment operator, and `"Lane"` sit right next to each other.
+
+**Using a variable**
+
+```bash
+$ echo $name
+Lane
+```
+
+(The `$` at the start of the line is just the prompt convention, not something to type — the actual command is `echo $name`.)
+
+Unlike Python, where a bare variable name works, the shell needs a `$` prefix to read a variable's value — otherwise it treats it as a literal string.
+
+**Interpolating a variable in a string**
+
+```bash
+$ echo Hello $name
+Hello Lane
+```
