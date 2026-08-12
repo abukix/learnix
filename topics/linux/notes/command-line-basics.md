@@ -54,3 +54,20 @@ In other words, a shell is a program that:
 2. Evaluates it, usually by running another program on your computer
 3. Prints the output of that command
 4. Gives you a new prompt so you can repeat the cycle
+
+## 1.3 Command Line vs. GUI
+
+In other courses, code often gets run by clicking a "Run" button. In real development work, code is more often run from a command line interface (CLI) instead — e.g. running a Python file with `python main.py`.
+
+**What's a CLI?**
+
+"Terminal," "shell," "command line," "CLI," and "command prompt" get used interchangeably (despite some technical differences) to mean the same general thing: a program that lets you interact with your computer in a text-based way.
+
+**What's a GUI?**
+
+A graphical user interface (GUI) is the mouse-and-icons style of interaction most people are used to — clicking buttons, menus, and icons. GUIs are generally easier to learn since you can just point at things. But they have real drawbacks compared to a CLI:
+
+- **Weaker** — a GUI only exposes the options its developer chose to build; a CLI gives far more direct control over the computer.
+- **Slower** — once you know the commands, typing them beats clicking through menus.
+- **Less reproducible** — commands can be copy-pasted as exact instructions, with no dependency on screen size or UI layout.
+- **Not automatable** — it's easy to write code that manipulates text, much harder to write code that manipulates a GUI.
