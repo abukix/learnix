@@ -109,3 +109,19 @@ Unlike Python, where a bare variable name works, the shell needs a `$` prefix to
 $ echo Hello $name
 Hello Lane
 ```
+
+## 1.5 History
+
+In a REPL, it's useful to see commands typed in the past — to re-run them, or copy them into a script. The `history` command prints that history.
+
+```bash
+history
+```
+
+## 1.6 Navigate History
+
+Retyping a command you already ran is a waste of keystrokes. Two shortcuts help:
+
+**Arrow keys** — ↑ walks backward through command history one entry at a time; ↓ walks forward again once you've gone back too far. Arrow up to the command, hit Enter, done.
+
+**Clear** — `clear` (or Ctrl+L) wipes the visible screen when it gets cluttered. It doesn't touch history, just the display.
