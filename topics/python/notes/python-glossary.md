@@ -48,3 +48,29 @@ Which to use isn't a fixed rule — it depends on whether the names in play woul
 ### Return type hints (`-> T`)
 
 A function's return type hint describes only what the `return` statement actually sends back — not the types of variables used internally. A function that builds an f-string out of `int`, `bool`, and `float` values still returns a plain `str`, since f-strings always produce a string regardless of what's interpolated into them.
+
+## Day 2 — Functions
+
+### Parameters vs. hardcoded values
+
+A function's parameters are placeholders that receive whatever values are passed in at call time — they don't reach out and grab data from anywhere else. Writing `create_character(name, hp, level, luck)` and then ignoring `name`/`hp`/`level`/`luck` inside the body (e.g. calling some other hardcoded function instead) means the arguments passed in are silently discarded; the function's output stops depending on its inputs at all.
+
+### `return` vs. `print`
+
+`return` hands a value back to whatever called the function, so the caller decides what to do with it (print it, store it, pass it on). `print` just writes text to the screen and gives the caller `None` back. A function documented to *return* a formatted string must not print it internally — printing is the caller's job, done separately after the call.
+
+### Dict literal: keys vs. values
+
+In `{key: value}`, the key and value are two independent expressions evaluated on the spot — nothing ties a key's *name* to a value automatically. `{"name": name}` uses the string literal `"name"` as a fixed, repeatable key, and the variable `name`'s current contents as the value. Writing `{name: str}` instead uses whatever `name` currently holds as the key (so it'd change every call) and the type object `str` itself — not any actual data — as the value. The fix for building a dict from existing variables: `{"label": variable}` — string literal on the left, bare variable on the right.
+
+### Dict key access (`d["key"]`)
+
+Square-bracket indexing on a dict looks up the value stored under that exact key, e.g. `character["hp"]` retrieves whatever was stored at `"hp"` when the dict was built. It's the mirror image of building the dict in the first place — construction uses `{"key": value}`, retrieval uses `d["key"]`.
+
+### Tuple-by-comma inside an f-string placeholder
+
+Inside an f-string's `{}`, a comma-separated list of expressions isn't several separate values — it's a single tuple. `f"{a, b, c}"` interpolates one thing: the tuple `(a, b, c)`, printed with its parens and commas intact. To interpolate several values with custom text between them, each one needs its own `{}` placeholder, with the literal separator text typed outside the braces: `f"{a} | {b} | {c}"`.
+
+### Nested quotes inside f-strings (PEP 701, Python 3.12+)
+
+Historically, an f-string couldn't reuse its own quote character inside its `{}` expressions (`f"{d["key"]}"` was a `SyntaxError`) — the string literal parsing and the expression parsing weren't independent. PEP 701 (Python 3.12+) removed that restriction, so `f"{d["key"]}"` is now valid: the same quote character can appear both as the string's delimiter and inside the embedded expression. Code relying on this isn't portable to pre-3.12 interpreters.
