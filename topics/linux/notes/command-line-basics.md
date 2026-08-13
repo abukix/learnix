@@ -125,3 +125,24 @@ Retyping a command you already ran is a waste of keystrokes. Two shortcuts help:
 **Arrow keys** — ↑ walks backward through command history one entry at a time; ↓ walks forward again once you've gone back too far. Arrow up to the command, hit Enter, done.
 
 **Clear** — `clear` (or Ctrl+L) wipes the visible screen when it gets cluttered. It doesn't touch history, just the display.
+
+# CH2: The Filesystem
+
+## 2.0 What Is a Filesystem?
+
+All the data on a computer is organized into files and directories, arranged in a tree-like structure called a filesystem.
+
+- **Directories** ("folders" on Windows) are just containers holding files and other directories.
+- **Files** are a dump of raw binary data — 1s and 0s. Those bytes can represent anything: text, images, video, whatever.
+
+The tree starts at a single **root directory**. Everything else — files and directories — lives inside it, nested as deep as needed.
+
+Whenever a terminal is open, it's sitting "in" some directory — the **working directory**. Most commonly, that's the home directory.
+
+**Print the working directory**
+
+```bash
+pwd
+```
+
+`pwd` prints the filepath of the directory the shell is currently in.
