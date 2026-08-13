@@ -282,3 +282,16 @@ tail -n 10 file1.txt
 ```
 
 Useful for a CSV: `head -n 6` grabs the header row plus the first 5 data rows in one shot.
+
+## 2.7 More and Less
+
+`more` and `less` are **interactive pagers** — they take over the terminal window so a file can be viewed one page (or line) at a time, instead of dumping everything at once like `cat`.
+
+`less` does everything `more` does plus more (the name is a pun — "less is more"). As a general rule, prefer `less`; only reach for `more` on a system where `less` isn't installed.
+
+**Inside `less`:**
+
+- Spacebar — move down one page
+- `b` — move up one page
+- `/` — search
+- `q` — quit back to the shell prompt
