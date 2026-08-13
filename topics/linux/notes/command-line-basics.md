@@ -188,3 +188,34 @@ cd ../..
 ```
 
 That moves up two directories from the current one.
+
+## 2.3 Absolute vs. Relative Paths
+
+A **relative path** takes the current directory into account — it describes where a file is *relative to* wherever the shell currently sits. Given this structure:
+
+```
+vehicles
+├── cars
+│   ├── fords
+│   │   ├── mustang.txt
+│   │   └── focus.txt
+```
+
+The relative path to `mustang.txt` changes depending on where you're standing:
+
+- From `vehicles`: `cars/fords/mustang.txt`
+- From `cars`: `fords/mustang.txt`
+- From `fords`: `mustang.txt`
+
+An **absolute path** starts at the filesystem root (`/` on Unix-like systems) instead, so it's the same no matter where the shell currently is:
+
+```
+/vehicles/cars/fords/mustang.txt
+```
+
+From inside `fords`, both `mustang.txt` (relative) and `/vehicles/cars/fords/mustang.txt` (absolute) point to the same file.
+
+**Which to use** — depends on context:
+
+- Relative paths are shorter and easier to reason about, as long as you know what directory you're in.
+- Absolute paths are explicit and unambiguous regardless of current location — useful when the starting directory isn't guaranteed, e.g. giving someone else instructions to find a file.
