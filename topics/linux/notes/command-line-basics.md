@@ -335,3 +335,19 @@ mv photo.png images/
 ```
 
 Both source and destination are resolved relative to the current working directory (or given as absolute paths) — `pwd` and `ls` are the go-to sanity checks before and after a move, since a wrong destination silently relocates the file rather than erroring.
+
+## 2.10 Remove
+
+**The `rm` command** — deletes a file, or an empty directory:
+
+```bash
+rm some_file.txt
+```
+
+The `-r` (recursive) flag deletes a directory and everything inside it — files, subdirectories, and their contents, applied again at each level down:
+
+```bash
+rm -r some_directory
+```
+
+Deleting a non-empty directory without `-r` fails; `-r` is what's needed to remove both a directory and its contents in one go.
