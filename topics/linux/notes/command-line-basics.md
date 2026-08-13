@@ -351,3 +351,19 @@ rm -r some_directory
 ```
 
 Deleting a non-empty directory without `-r` fails; `-r` is what's needed to remove both a directory and its contents in one go.
+
+## 2.11 Copy
+
+**The `cp` command** — copies a file from one location to another, leaving the original in place:
+
+```bash
+cp source_file.txt destination/
+```
+
+Copying a directory and all its contents needs the recursive flag:
+
+```bash
+cp -R my_dir new_dir
+```
+
+On most Linux distros, `-r` and `-R` both mean "recursive" for `cp` and either works — same idea as the `-r` flag on `rm`, just case-insensitive here. Worth being deliberate with `-R` on a directory that recurses into itself (e.g. copying a directory into its own subdirectory) — that can spiral indefinitely.
