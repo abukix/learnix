@@ -409,3 +409,23 @@ grep -r "hello" .
 ```
 
 `.` is a special alias for the current directory — the same directory-alias pattern as `..` for the parent (see [2.2](#22-parent-directories)).
+
+## 2.15 Find
+
+**The `find` command** — locates files and directories by *name*, not by contents (that's `grep`'s job).
+
+**Exact name:**
+
+```bash
+find some_directory -name hello.txt
+```
+
+**Pattern search** — `*` is a wildcard matching anything, so it works for extensions or substrings:
+
+```bash
+# Every file ending in .txt
+find some_directory -name "*.txt"
+
+# Every filename containing "chad"
+find some_directory -name "*chad*"
+```
