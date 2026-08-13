@@ -305,3 +305,33 @@ A directory is just a location in the filesystem that can contain files and othe
 ```bash
 mkdir my_directory
 ```
+
+## 2.9 Move
+
+**The `mv` command** — moves a file or directory from one location to another. It doubles as "rename" when the destination is just a new name in the same directory. (A directory being moved can't be the current working directory.)
+
+**Rename a file** (same location, new name):
+
+```bash
+mv draft.md final.md
+```
+
+**Move into a nested directory:**
+
+```bash
+mv report.csv archives/report.csv
+```
+
+**Move up to the parent directory:**
+
+```bash
+mv invoice.pdf ../invoice.pdf
+```
+
+**Move without renaming** — omit the filename on the destination, keeping the original name:
+
+```bash
+mv photo.png images/
+```
+
+Both source and destination are resolved relative to the current working directory (or given as absolute paths) — `pwd` and `ls` are the go-to sanity checks before and after a move, since a wrong destination silently relocates the file rather than erroring.
