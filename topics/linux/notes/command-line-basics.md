@@ -235,3 +235,32 @@ cat file1.txt file2.txt
 ```
 
 The name feels odd for viewing a single file, but makes more sense once you're using it to stitch several files together on output.
+
+## 2.5 Tab Completion
+
+Typing out long paths by hand is slow. Hitting **Tab** while typing a file or directory name asks the shell to autocomplete it.
+
+**Single match** — the rest gets filled in automatically:
+
+```bash
+ls w<Tab>
+# ls worldbanc/
+```
+
+**Multiple matches** — the shell lists the candidates instead of guessing:
+
+```bash
+ls worldbanc/p<Tab>
+# private public
+```
+
+Typing one more distinguishing character and pressing Tab again narrows it down:
+
+```bash
+ls worldbanc/pr<Tab>
+# ls worldbanc/private/
+```
+
+In practice, most path segments only need a few characters typed before Tab resolves them — rarely the full name.
+
+**Beyond paths** — Tab completion also works for command names (typing `cl` + Tab completes to `clear` if it's the only match), and many CLI tools (e.g. `git`) support it for their own subcommands and options, though that often requires enabling a completion script in the shell's config file (covered later).
