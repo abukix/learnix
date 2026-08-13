@@ -74,3 +74,44 @@ Inside an f-string's `{}`, a comma-separated list of expressions isn't several s
 ### Nested quotes inside f-strings (PEP 701, Python 3.12+)
 
 Historically, an f-string couldn't reuse its own quote character inside its `{}` expressions (`f"{d["key"]}"` was a `SyntaxError`) — the string literal parsing and the expression parsing weren't independent. PEP 701 (Python 3.12+) removed that restriction, so `f"{d["key"]}"` is now valid: the same quote character can appear both as the string's delimiter and inside the embedded expression. Code relying on this isn't portable to pre-3.12 interpreters.
+
+## Day 3 — Scope
+
+### Scope
+
+The region of code where a variable name is visible and resolvable. Python has (roughly) two levels in play here: **local** — names created inside a function, alive only during that call — and **global** — names created at module level, alive as long as the module is loaded. A function can *read* a global without any special syntax; *writing* to one is where the rules get sharp.
+
+### Local-variable detection is a compile-time decision
+
+Before a function ever runs, Python scans its source for assignment targets — anything shaped like `name = ...`, `name -= ...`, `for name in ...`, `with ... as name`, etc. If `name` is assigned anywhere in the function body, it's treated as **local for the entire function**, on every line, even lines written above the assignment. This scan happens once, at compile time, by looking at the syntax — not by simulating execution.
+
+### `UnboundLocalError`
+
+Raised when a function reads a name that's been classified local (because it's assigned somewhere in the function) before that name has actually been assigned *in this call*. The local variable "exists" as a reserved slot the moment the function is compiled, but the slot stays empty ("unbound") until its assignment line actually executes. Reading an empty slot is the crash — distinct from `NameError`, which is what you get for a name that isn't recognized as existing anywhere at all.
+
+**Concretely** (from `sandbox/python/day03_scope.py`):
+
+```python
+PARTY_GOLD = 100
+
+def spend_gold_broken(amount):
+    PARTY_GOLD -= amount   # desugars to: PARTY_GOLD = PARTY_GOLD - amount
+    return PARTY_GOLD
+```
+
+The `PARTY_GOLD = ...` on that line (hidden inside the `-=`) is enough to make `PARTY_GOLD` local for the whole function — so the *read* half of `PARTY_GOLD - amount` looks in the local slot, finds it unbound, and crashes. The module-level `PARTY_GOLD = 100` is never consulted; it's shadowed by the local classification regardless of execution order.
+
+### Compound assignment (`-=`, `+=`, etc.) still counts as assignment
+
+`x -= y` is shorthand for `x = x - y` — it both reads and writes `x`, but the part that matters for scope classification is the write. A bare expression like `x - y` (no `=` at all) never assigns anything, so it never triggers local classification — it just reads whatever `x` already resolves to (local if already local, global otherwise).
+
+### `global` keyword
+
+A declaration (`global PARTY_GOLD`) placed inside a function that overrides the default local-classification rule: assignments to that name inside the function now write to the module-level variable instead of creating a local one. Necessary only when a function needs to *mutate* a global in place; not needed for reading one.
+
+### Return-and-reassign vs. `global` mutation
+
+Two ways to let a function "update" module-level state:
+
+- **`global` + in-place mutation** — function writes directly to the global; caller doesn't need to do anything extra, but the function now has a hidden side effect that isn't visible from its signature.
+- **Return the new value, reassign at the call site** (`PARTY_GOLD = spend_gold(PARTY_GOLD, 10)`) — function stays a pure calculator (same inputs always produce the same output, no hidden writes), and the mutation is explicit and visible at the call site instead of buried inside the function. Generally preferred: easier to test in isolation, easier to reason about from the call site alone.
