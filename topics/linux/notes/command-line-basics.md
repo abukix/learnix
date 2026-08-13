@@ -264,3 +264,21 @@ ls worldbanc/pr<Tab>
 In practice, most path segments only need a few characters typed before Tab resolves them — rarely the full name.
 
 **Beyond paths** — Tab completion also works for command names (typing `cl` + Tab completes to `clear` if it's the only match), and many CLI tools (e.g. `git`) support it for their own subcommands and options, though that often requires enabling a completion script in the shell's config file (covered later).
+
+## 2.6 `head` and `tail`
+
+`cat` dumps a whole file, which isn't great for big files. Two commands print just a slice instead:
+
+**`head`** — prints the first `n` lines, set with the `-n` flag (defaults to 10 if omitted):
+
+```bash
+head -n 10 file1.txt
+```
+
+**`tail`** — same idea, but the last `n` lines:
+
+```bash
+tail -n 10 file1.txt
+```
+
+Useful for a CSV: `head -n 6` grabs the header row plus the first 5 data rows in one shot.
