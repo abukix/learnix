@@ -146,3 +146,29 @@ pwd
 ```
 
 `pwd` prints the filepath of the directory the shell is currently in.
+
+## 2.1 Filepaths
+
+The output of `pwd` is a **filepath** — a string describing where a file or directory sits on the filesystem tree.
+
+The leading `/` always represents the root directory, the very top of the tree. Everything after it is a directory name, one level deeper than the last, separated by more `/`s.
+
+Home directory conventions differ by platform:
+
+- **Linux / Windows WSL** — `/home/<username>`, e.g. `/home/wagslane`:
+
+  ```
+  root
+    └── home
+          └── wagslane
+  ```
+
+- **macOS** — `/Users/<username>`, e.g. `/Users/wagslane`:
+
+  ```
+  root
+    └── Users
+          └── wagslane
+  ```
+
+Both are 2 levels down from root — just a different directory name (`home` vs `Users`) holding the user's folder.
