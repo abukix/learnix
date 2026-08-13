@@ -172,3 +172,19 @@ Home directory conventions differ by platform:
   ```
 
 Both are 2 levels down from root — just a different directory name (`home` vs `Users`) holding the user's folder.
+
+## 2.2 Parent Directories
+
+`cd` ("change directory") moves the shell into a directory. Moving back out uses `..` — a special alias for "the parent directory," letting you step up one level in the tree.
+
+```bash
+cd ..
+```
+
+Chaining `..` segments with `/` moves up multiple levels at once:
+
+```bash
+cd ../..
+```
+
+That moves up two directories from the current one.
