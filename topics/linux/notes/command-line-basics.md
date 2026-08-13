@@ -367,3 +367,19 @@ cp -R my_dir new_dir
 ```
 
 On most Linux distros, `-r` and `-R` both mean "recursive" for `cp` and either works — same idea as the `-r` flag on `rm`, just case-insensitive here. Worth being deliberate with `-R` on a directory that recurses into itself (e.g. copying a directory into its own subdirectory) — that can spiral indefinitely.
+
+## 2.12 Home
+
+A user's **home directory** holds their personal files, and is where they land on login. It's the directory to spend most of development time in — e.g. a `workspace` directory inside home, with programming projects as subdirectories of that.
+
+**Danger** — other top-level directories (`/bin`, `/etc`, `/var`, etc.) are critical to the OS or other programs. Working carelessly in them can break the system; home is the safe place to experiment.
+
+**The `$HOME` variable** — an environment variable holding the absolute path to the current user's home directory:
+
+```bash
+echo $HOME
+```
+
+On macOS this might print `/Users/wagslane`; on Linux, `/home/wagslane`.
+
+**The `~` alias** — shorthand for the home directory, so `cd ~` gets there without typing out `cd $HOME` or the full absolute path.
