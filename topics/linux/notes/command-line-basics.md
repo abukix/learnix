@@ -383,3 +383,13 @@ echo $HOME
 On macOS this might print `/Users/wagslane`; on Linux, `/home/wagslane`.
 
 **The `~` alias** — shorthand for the home directory, so `cd ~` gets there without typing out `cd $HOME` or the full absolute path.
+
+## 2.13 Grep
+
+**The `grep` command** — searches for text in files, the CLI equivalent of a GUI's Ctrl+F/Cmd+F.
+
+```bash
+grep "hello" words.txt
+```
+
+Prints every line in `words.txt` containing `hello`. The search is case-sensitive by default — this matches `hello` but not `Hello` or `HELLO`.
