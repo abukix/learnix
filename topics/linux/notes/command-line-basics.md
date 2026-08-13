@@ -393,3 +393,19 @@ grep "hello" words.txt
 ```
 
 Prints every line in `words.txt` containing `hello`. The search is case-sensitive by default — this matches `hello` but not `Hello` or `HELLO`.
+
+## 2.14 `grep` Multiple Files
+
+**Multiple files at once** — list them all after the search term:
+
+```bash
+grep "hello" hello.txt hello2.txt
+```
+
+**Recursive search** — the `-r` flag searches a whole directory, including all subdirectories:
+
+```bash
+grep -r "hello" .
+```
+
+`.` is a special alias for the current directory — the same directory-alias pattern as `..` for the parent (see [2.2](#22-parent-directories)).
