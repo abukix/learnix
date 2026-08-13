@@ -219,3 +219,19 @@ From inside `fords`, both `mustang.txt` (relative) and `/vehicles/cars/fords/mus
 
 - Relative paths are shorter and easier to reason about, as long as you know what directory you're in.
 - Absolute paths are explicit and unambiguous regardless of current location — useful when the starting directory isn't guaranteed, e.g. giving someone else instructions to find a file.
+
+## 2.4 Files
+
+At their core, files are just blobs of raw data — the bytes can represent anything: text, images, video, whatever.
+
+**The `cat` command** — short for "concatenate" (put things together), used to view a file's contents:
+
+```bash
+# Print the contents of a file to the terminal
+cat file1.txt
+
+# Concatenate the contents of multiple files and print them to the terminal
+cat file1.txt file2.txt
+```
+
+The name feels odd for viewing a single file, but makes more sense once you're using it to stitch several files together on output.
