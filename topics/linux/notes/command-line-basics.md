@@ -295,3 +295,13 @@ Useful for a CSV: `head -n 6` grabs the header row plus the first 5 data rows in
 - `b` — move up one page
 - `/` — search
 - `q` — quit back to the shell prompt
+
+## 2.8 Directories
+
+A directory is just a location in the filesystem that can contain files and other directories — some systems call them "folders," but it's the same concept.
+
+**The `mkdir` command** — "make directory," creates a new directory inside (or relative to) the current one:
+
+```bash
+mkdir my_directory
+```
