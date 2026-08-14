@@ -429,3 +429,4 @@ find some_directory -name "*.txt"
 # Every filename containing "chad"
 find some_directory -name "*chad*"
 ```
+# CH3: Programs
