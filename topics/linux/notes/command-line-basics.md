@@ -430,3 +430,7 @@ find some_directory -name "*.txt"
 find some_directory -name "*chad*"
 ```
 # CH3: Programs
+
+```
+Keep on grinding, achieve your dreams.
+```
