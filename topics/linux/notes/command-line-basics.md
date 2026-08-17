@@ -686,3 +686,31 @@ Whether or not a command takes flags, and what those flags are, is up to the dev
 - Single-character flags are prefixed with a single dash (e.g. `-a`)
 - Multi-character flags are prefixed with two dashes (e.g. `--help`)
 - Sometimes the same flag can be used with a single dash or two dashes (e.g. `-h` or `--help`)
+
+## Positional Arguments
+
+Programming languages have functions, and functions take arguments. For example, this Python function takes two parameters, `xp` and `level`:
+
+```python
+def print_player(xp, level):
+    print("Player has", xp, "xp and is level", level)
+```
+
+It can then be called with two arguments:
+
+```python
+print_player(100, 2)
+# Player has 100 xp and is level 2
+```
+
+In a shell, commands (programs) can also take arguments. For example, the `cd` command takes a single argument (the directory to change to):
+
+```bash
+cd /home/wagslane
+```
+
+Other commands might take multiple arguments. For example, the `mv` command takes two arguments: the file to move, and the destination to move it to:
+
+```bash
+mv file.txt dest/file.txt
+```
