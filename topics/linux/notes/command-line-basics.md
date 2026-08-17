@@ -459,3 +459,21 @@ The `which` command tells you the location of an installed command line program.
 If you were to `cat /bin/sh`, you wouldn't see readable text. You'd see a screen full of garbage. That's because your `sh` program is a compiled executable, probably written in C. The raw machine code isn't meant for human eyes.
 
 A file with a `.sh` extension, on the other hand, is a shell script. It's a text file that contains commands that will be interpreted and run by the `sh` program. They are both executable programs, but only one can be run without the help of another program.
+
+## Executables
+
+You're familiar with the idea of reading and writing data into files. But what about executing them? Executable files are just files where the data stored inside is a program that you can run on your computer.
+
+Files with a `.sh` extension are shell scripts. They're just text files that contain shell commands. You can run a file in your shell by typing its filepath:
+
+```bash
+mydir/program.sh
+```
+
+Interestingly, if the program is in the current directory (in this example, the `mydir` directory), you need to prefix it with `./` to run it:
+
+```bash
+./program.sh
+```
+
+As far as file paths go, `./program.sh` and `program.sh` are the same. The dot (`.`) is an alias for the current directory. We need the prefix when running executables so that the shell knows we're trying to run a file from a file path, not an installed command like `ls`, `mkdir`, `chmod`, etc.
