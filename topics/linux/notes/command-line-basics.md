@@ -638,3 +638,21 @@ export PATH="$PATH:/some/new/directory"
 ```
 
 The `$PATH` part is a reference to the existing `PATH` variable. The `:` separates the existing directories from the new directory that you're adding.
+
+# CH4: Input/Output
+
+## Help
+
+By convention, most production-ready CLI tools have a "help" option that prints information about how to use the tool. It's usually accessed with one of the following:
+
+- `--help` (flag)
+- `-h` (flag)
+- `help` (first positional argument)
+
+The "help" output is often easier to parse than a full man page. It's usually more of a quick start guide than a full manual.
+
+For example:
+
+```bash
+grep --help
+```
