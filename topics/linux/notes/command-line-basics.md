@@ -519,3 +519,64 @@ To get hand-wavy about it, I want to explain the difference between the 3 shells
 - `zsh`: The Z shell. This is the most popular shell on macOS. Like `bash`, it does what `sh` can do, but also has a lot of extra features.
 
 Both `zsh` and `bash` are "sh-compatible" shells, meaning they can run `.sh` scripts, but they also have extra features that generally make them more pleasant to use. For your purposes, the differences between `zsh` and `bash` are not super significant. Everything we do in this course will work in both shells.
+
+## Environment Variables
+
+We talked about how you can create and use local variables in your shell:
+
+```bash
+name="Lane"
+echo $name
+# Lane
+```
+
+There is another type of variable called an environment variable. They are available to all programs that you run in your shell.
+
+You can view all of the environment variables that are currently set in your shell with the `env` command.
+
+### Export
+
+To set a variable for your current shell session, use the `export` command (it won't persist if you close the terminal):
+
+```bash
+export NAME="Lane"
+```
+
+You can then use the variable in your shell, just as before:
+
+```bash
+echo $NAME
+# Lane
+```
+
+The interesting part is that programs and scripts you run in your shell can also use that variable:
+
+For example, if we have a script called `introduce.sh` with the following contents:
+
+```bash
+#!/bin/sh
+echo "Hi I'm $NAME"
+```
+
+We can run it and it will use the `NAME` environment variable we set earlier:
+
+```bash
+./introduce.sh
+# Hi I'm Lane
+```
+
+You can also temporarily set a variable for a single command, instead of exporting it for the whole session.
+
+For example:
+
+```bash
+WARN_MESSAGE="this works too" bash worldbanc/private/bin/warn.sh
+```
+
+### Unset
+
+You can use the `unset` command to remove an environment variable from your current shell session:
+
+```bash
+unset NAME
+```
