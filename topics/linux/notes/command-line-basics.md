@@ -714,3 +714,40 @@ Other commands might take multiple arguments. For example, the `mv` command take
 ```bash
 mv file.txt dest/file.txt
 ```
+
+## Exit Codes
+
+Exit codes (sometimes called "return codes" or "status codes") are how programs communicate back whether they ran successfully or not.
+
+`0` is the exit code for success. Any other exit code is an error. 9 times out of 10, if a non-zero exit code is returned (meaning an error) it will be `1`, which is the "catch-all" error code.
+
+Programs that call other programs use error codes to figure out if execution was successful. For example, if the Boot.dev server program exits with a non-zero exit code, we have another program that will automatically restart it and log the error.
+
+### Printing Exit Codes
+
+In a shell, you can access the exit code of the last program you ran with the question mark variable (`$?`):
+
+```bash
+cat greeting.txt
+# General Kenobi!
+echo $?
+# 0
+
+cat file/that/does/not/exist.txt
+echo $?
+# 1
+```
+
+### Running Commands Conditionally
+
+You can run multiple commands on a single line by separating them with a semicolon (`;`):
+
+```bash
+command1 ; command2
+```
+
+If you only want the second command to run when the first command succeeds (exit code 0), use `&&`:
+
+```bash
+command1 && command2
+```
