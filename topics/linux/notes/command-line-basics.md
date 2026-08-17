@@ -853,3 +853,33 @@ In the example above, the `echo` command sends "Have you heard the tragedy of Da
 However, instead of that text being sent to your terminal, the pipe operator pipes it into the `wc` (word count) command. The `wc` command counts the number of words in the input it receives. The `-w` flag tells `wc` to only count words.
 
 This only works because the `wc` command, like most shell commands, can optionally read from stdin instead of a filepath argument.
+
+## Unix Philosophy
+
+The Unix Philosophy is a simple set of principles that have guided the development of Unix-like operating systems for decades. It can be summarized as:
+
+1. Write programs that do one thing and do it well.
+2. Write programs to work together.
+3. Write programs to handle text streams, because that is a universal interface.
+
+### 1. Write Programs That Do One Thing and Do It Well
+
+This is why programs like `ls`, `grep`, and `less` exist. They do one thing, and they do it well. They don't try to do too much.
+
+- `ls` lists files and directories
+- `grep` searches for text
+- `less` displays text
+
+### 2. Write Programs to Work Together
+
+Because, at least according to the Unix Philosophy, programs should do one thing and do it well, it's easy to write programs that work together. For example, you can use `grep` to search for text in a file, and then pipe the output of `grep` into `less` to display the results interactively:
+
+```bash
+grep "hello" some_file.txt | less
+```
+
+### 3. Write Programs to Handle Text Streams, Because That Is a Universal Interface
+
+This point is more the "how" of the previous point. Programs work together easily when they all use the same interface: text streams. A text stream is just a sequence of characters that can be read or written sequentially. In other words, a text stream is just text.
+
+This hearkens back to the point we talked about at the beginning of this course: the shell is a command-line (text) interface. Text-based interfaces are much more powerful and extensible than graphical interfaces. That's why developers have been using them for decades, and why what we can do with them looks like magic to the uninitiated.
