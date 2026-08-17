@@ -619,3 +619,22 @@ Which means your shell will use all these directories to look for executables:
 - `/bin`
 - `/usr/sbin`
 - `/sbin`
+
+## Change Your PATH
+
+A common problem you'll run into when installing programs via the terminal is that after installing, you try to run the program and get an error like this:
+
+```
+$ my-new-program
+-bash: my-new-program: command not found
+```
+
+Nine times out of ten, it's because the program is installed in a directory that's not in your `PATH` variable. Oftentimes when you install a program using the CLI, it will print a message during the installation process that tells you where the executable was installed. Don't let your eyes glaze over when your terminal prints important messages! Sometimes you just gotta rtfm.
+
+To add a directory to your `PATH` without overwriting all of the existing directories, use the `export` command and reference the existing `PATH` variable:
+
+```bash
+export PATH="$PATH:/some/new/directory"
+```
+
+The `$PATH` part is a reference to the existing `PATH` variable. The `:` separates the existing directories from the new directory that you're adding.
