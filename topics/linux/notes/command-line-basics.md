@@ -477,3 +477,29 @@ Interestingly, if the program is in the current directory (in this example, the 
 ```
 
 As far as file paths go, `./program.sh` and `program.sh` are the same. The dot (`.`) is an alias for the current directory. We need the prefix when running executables so that the shell knows we're trying to run a file from a file path, not an installed command like `ls`, `mkdir`, `chmod`, etc.
+
+## Shebang
+
+As we talked about before, you can run any executable file by typing its file path into your shell. For example:
+
+```bash
+bin/genids.sh
+```
+
+That works out-of-the-box for files that are compiled executables. But what about scripts that need to be interpreted by another program? The computer needs to be told what program to use to interpret the file.
+
+A "shebang" is a special line at the top of a script that tells your shell which program to use to execute the file.
+
+The format of a shebang is:
+
+```
+#! interpreter [optional-arg]
+```
+
+For example, if your script is a Python script and you want to use Python 3, your shebang might look like this:
+
+```
+#!/usr/bin/python3
+```
+
+This tells the system to use the Python 3 interpreter located at `/usr/bin/python3` to run the script.
