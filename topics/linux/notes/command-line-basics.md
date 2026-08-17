@@ -799,3 +799,38 @@ cat error.txt
 ```
 
 In this example, `cat` is used to intentionally generate an error message (since the file doesn't exist), which is then redirected to `error.txt`.
+
+## Standard In
+
+If there's a standard output, there must be a standard input, right?
+
+"Standard Input", usually called "standard in" or stdin, is the default place where programs read their input. It's just a stream of data that programs can read from as they run.
+
+All major programming languages provide a simple way to read from stdin. In Python, it's the `input` function:
+
+```python
+# execution stops until the user types
+# something (in this case "Lane") and presses enter
+name = input("What is your name? ")
+
+print("Hello,", name)
+# Hello, Lane
+```
+
+### Redirecting Input
+
+The `<` operator redirects a file into a program's stdin. For example, to feed the contents of a file called `input.txt` into the "word count" program, you can run:
+
+```bash
+wc < input.txt
+```
+
+This is not the same as:
+
+```bash
+wc input.txt
+```
+
+In `wc input.txt`, the `wc` program is accepting a filepath string as an argument, and it opens the file itself.
+
+In `wc < input.txt`, the `wc` program doesn't know anything about the file, the file's contents are just being sent to the program's stdin, and it reads from there.
