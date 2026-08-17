@@ -6,10 +6,10 @@ Companion to the boot.dev course notes in [`topics/python/notes/python-basics.md
 
 ## Progress
 
-- [ ] Day 1 — Character sheet (variables & types, f-strings)
-- [ ] Day 2 — Functions (`create_character`, `describe_character`)
-- [ ] Day 3 — Scope (the `PARTY_GOLD` bug, then the fix)
-- [ ] Day 4 — Roster loop (`list[dict]`, loops)
+- [x] Day 1 — Character sheet (variables & types, f-strings)
+- [x] Day 2 — Functions (`create_character`, `describe_character`)
+- [x] Day 3 — Scope (the `PARTY_GOLD` bug, then the fix)
+- [x] Day 4 — Roster loop (`list[dict]`, loops)
 - [ ] Day 5 — Roster operations (add/remove/sort/filter, no mutation)
 - [ ] Day 6 — Inventory & quest log (dictionaries)
 - [ ] Day 7 — Locations & coordinates (sets & tuples)

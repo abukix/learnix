@@ -11,12 +11,13 @@ from day02_functions import create_character, describe_character
 
 
 def print_roster(party):
-    # TODO: loop over party and print each member's description
-    pass
-
+    for members in party:
+        print(describe_character(members))
 
 if __name__ == "__main__":
     party = [
-        # TODO: build the party with create_character(...)
+        create_character("Kael", 42, 3, 1.5),
+        create_character("Wren", 30, 2, 1.0),
+        create_character("John", 32, 5, 1.4),
     ]
     print_roster(party)
