@@ -431,6 +431,31 @@ find some_directory -name "*chad*"
 ```
 # CH3: Programs
 
-```
-Keep on grinding, achieve your dreams.
-```
+## Compiled vs. Interpreted
+
+A program is just a set of instructions that a computer can execute, and an "executable" is just a file that contains a program. The words "program" and "executable" are often used interchangeably. Broadly speaking, there are two types of programs:
+
+- Compiled programs
+- Interpreted programs
+
+### Compiled Programs
+
+A compiled program is a program that has been converted from human-readable source code into machine code (binary). Machine code is a set of instructions that a computer can execute directly: your computer's CPU is hardware that's been designed to execute machine code.
+
+Programming languages like Go, C, and Rust produce compiled programs.
+
+### Interpreted Programs
+
+An interpreted program is a program that is executed by another program. The program that executes the interpreted program is called an interpreter. The interpreter reads the source code of the interpreted program and executes it.
+
+Programming languages like Python, Ruby, and JavaScript, are typically interpreted as they run, which means your computer needs to have the interpreter installed to run the program.
+
+Another example is the `.sh` shell script files we talked about. Those are interpreted by the shell program.
+
+### The `which` Command
+
+The `which` command tells you the location of an installed command line program. For example, `which sh` asks for the location of the `sh` (shell) program. On most machines it lives at `/bin/sh`.
+
+If you were to `cat /bin/sh`, you wouldn't see readable text. You'd see a screen full of garbage. That's because your `sh` program is a compiled executable, probably written in C. The raw machine code isn't meant for human eyes.
+
+A file with a `.sh` extension, on the other hand, is a shell script. It's a text file that contains commands that will be interpreted and run by the `sh` program. They are both executable programs, but only one can be run without the help of another program.
