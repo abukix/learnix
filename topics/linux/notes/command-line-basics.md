@@ -982,3 +982,24 @@ unalias ll
 ```
 
 **Persisting an alias** — same pattern as [PATH Config](#path-config): a temporary `alias` command only survives the current session, so to have it available every time the shell starts, add the `alias` line to the shell's configuration file (`.bashrc` or `.zshrc`).
+
+## Man
+
+`man`, short for "manual," displays the manual page for another program. It only works for programs it has a manual entry for, but that covers most built-in commands and Unix programs. Manuals get more useful as a developer gains experience — they read as less intimidating once there's a habit of actually opening them.
+
+**Using `man`** — pass the command name as an argument. Fittingly, the manual's own manual is a good starting point:
+
+```bash
+# open the man pages for the 'man' command
+man man
+```
+
+**Searching** — man pages are usually opened to look something up, not read start to finish (same `less`-style pager as [More and Less](#27-more-and-less)). Press `/` to search forward (or `?` to search backward), type the search text, and press Enter:
+
+```bash
+man ls
+# type '/-r' to start searching
+
+# press 'n' to jump to the next result
+# press 'N' to go back if you went too far
+```
