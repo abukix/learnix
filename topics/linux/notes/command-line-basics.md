@@ -1038,3 +1038,7 @@ This creates a symlink named `important.txt` in the current directory, pointing 
 ```
 important.txt -> documents/important.txt
 ```
+
+## Top
+
+`top` shows which programs are using the most resources on the computer — the command-line equivalent of Windows' Task Manager or macOS's Activity Monitor. It's a go-to for diagnosing performance issues, both on a local machine and on remote servers.
