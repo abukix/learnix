@@ -899,3 +899,14 @@ Where to find it depends on the OS:
   ```bash
   echo "I love the command line"
   ```
+
+## Installing Windows Subsystem for Linux
+
+Skippable on macOS or Linux — both are Unix-like enough for the whole course. Windows' built-in Command Prompt is rough by comparison, so Windows users are steered toward installing **WSL 2** (Windows Subsystem for Linux) with Ubuntu instead.
+
+WSL 2 gives Windows a real Linux OS, filesystem, and command line — no dual-boot needed — while leaving the normal Windows desktop (games, Windows apps, etc.) untouched. It's an official Microsoft product, so it doesn't interfere with the base Windows install.
+
+Two things worth keeping in mind:
+
+- **Version matters** — there are two WSL versions; the course uses the newer **WSL 2**.
+- **Separate filesystems** — the WSL 2 filesystem is entirely separate from the Windows filesystem. General rule of thumb: keep games/documents/Windows apps on the Windows side, and put all code on the Linux side.
