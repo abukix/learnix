@@ -883,3 +883,19 @@ grep "hello" some_file.txt | less
 This point is more the "how" of the previous point. Programs work together easily when they all use the same interface: text streams. A text stream is just a sequence of characters that can be read or written sequentially. In other words, a text stream is just text.
 
 This hearkens back to the point we talked about at the beginning of this course: the shell is a command-line (text) interface. Text-based interfaces are much more powerful and extensible than graphical interfaces. That's why developers have been using them for decades, and why what we can do with them looks like magic to the uninitiated.
+
+# CH5: Local CLI
+
+## Open a Terminal
+
+Everything done so far used boot.dev's in-browser shell. This lesson is about finding the real thing — a terminal on your own machine — since that's where the rest of the course (and real development work) happens.
+
+Where to find it depends on the OS:
+
+- **macOS** — the "Terminal" app, found via Spotlight (the magnifying glass, top-right corner).
+- **Windows** — "Command Prompt," found via the Start Menu. A nicer replacement gets installed in the next lesson.
+- **Linux** — already home. A sanity-check command works fine here:
+
+  ```bash
+  echo "I love the command line"
+  ```
