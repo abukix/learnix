@@ -962,3 +962,23 @@ The fix: put that same `export` line in the shell's configuration file (`.bashrc
 ```bash
 source ~/.bashrc
 ```
+
+## Shell Aliases
+
+A shell alias is a command shortcut — useful for shortening commands run all the time.
+
+**Creating an alias** — say `ls -la` gets typed constantly; a shortcut can be made for it:
+
+```bash
+alias ll="ls -la"
+```
+
+This only lasts for the current shell session — `ll` runs `ls -la` until the shell is closed. Running `alias` with no arguments lists every active alias in the session; passing a specific name (`alias ll`) lists just that one.
+
+**Removing an alias** — `unalias` drops one from the current session:
+
+```bash
+unalias ll
+```
+
+**Persisting an alias** — same pattern as [PATH Config](#path-config): a temporary `alias` command only survives the current session, so to have it available every time the shell starts, add the `alias` line to the shell's configuration file (`.bashrc` or `.zshrc`).
