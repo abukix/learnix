@@ -937,3 +937,16 @@ Step by step:
 2. `unzip worldbanc.zip` — extracts the archive's contents into a new `worldbanc-main` directory (GitHub zip archives are named `<repo>-<branch>`).
 3. `rm worldbanc.zip` — the zip itself is no longer needed once extracted, so it gets cleaned up.
 4. `mv worldbanc-main worldbanc` — renames the extracted directory to the shorter, branch-agnostic `worldbanc`.
+
+## Shell Configuration
+
+Bash and Zsh each run a configuration file automatically every time a new shell session starts. These files are the place to set up aliases, functions, and environment variables so they're available in every session, rather than typed fresh each time.
+
+They live in the home directory (`~`) and are hidden by default — filenames starting with `.` don't show up in a plain `ls`. The `-a` flag (seen back in [Flags](#flags)) reveals them:
+
+```bash
+ls -a ~
+```
+
+- **Bash** — the file to edit is `.bashrc`.
+- **Zsh** — the file to edit (creating it if it doesn't exist yet) is `.zshrc`.
