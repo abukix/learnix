@@ -950,3 +950,15 @@ ls -a ~
 
 - **Bash** — the file to edit is `.bashrc`.
 - **Zsh** — the file to edit (creating it if it doesn't exist yet) is `.zshrc`.
+
+## PATH Config
+
+Earlier ([Change Your PATH](#change-your-path)), the `PATH` variable got changed with `export` — but that only lasts for the current shell session. Restart the shell and it resets to default, meaning a tool like `worldbanc.sh` wouldn't be runnable from anywhere without redoing that `export` every single time.
+
+The fix: put that same `export` line in the shell's configuration file (`.bashrc` or `.zshrc`, from the previous lesson) so it runs automatically on every new shell session, permanently.
+
+**Reloading without restarting** — after editing the config file, the changes don't apply to the *current* session automatically (only new ones). Instead of closing and reopening the shell, the `source` command (or its shorthand, `.`) re-runs a file's commands in the current session:
+
+```bash
+source ~/.bashrc
+```
