@@ -910,3 +910,12 @@ Two things worth keeping in mind:
 
 - **Version matters** — there are two WSL versions; the course uses the newer **WSL 2**.
 - **Separate filesystems** — the WSL 2 filesystem is entirely separate from the Windows filesystem. General rule of thumb: keep games/documents/Windows apps on the Windows side, and put all code on the Linux side.
+
+## Terminal Alternatives
+
+The default terminal that ships with the OS is fine, but other options exist worth knowing about:
+
+- **Editor/IDE built-in terminals** — most developer text editors (VS Code, Zed, Cursor) bundle a terminal. Not recommended for this course specifically, since the extra text-editor features aren't needed here.
+- **Ghostty** — a new terminal emulator, fast, feature-rich, and native. Good pick for anyone who likes customizing their setup.
+- **Alacritty** — another fast, extensible terminal emulator; the go-to before Ghostty came along.
+- **Windows Terminal** — the terminal emulator for Windows. Its default shell can be changed via the "cmd.exe" program settings; when using it with WSL, remember to start WSL each time a new terminal window opens.
