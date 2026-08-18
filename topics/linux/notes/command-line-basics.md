@@ -919,3 +919,21 @@ The default terminal that ships with the OS is fine, but other options exist wor
 - **Ghostty** — a new terminal emulator, fast, feature-rich, and native. Good pick for anyone who likes customizing their setup.
 - **Alacritty** — another fast, extensible terminal emulator; the go-to before Ghostty came along.
 - **Windows Terminal** — the terminal emulator for Windows. Its default shell can be changed via the "cmd.exe" program settings; when using it with WSL, remember to start WSL each time a new terminal window opens.
+
+## Download Worldbanc
+
+Earlier lessons had the `worldbanc` files pre-loaded into the browser shell. On a local machine, that's no longer automatic — it has to be downloaded for real:
+
+```bash
+curl -L https://github.com/bootdotdev/worldbanc/archive/refs/heads/main.zip -o worldbanc.zip
+unzip worldbanc.zip
+rm worldbanc.zip
+mv worldbanc-main worldbanc
+```
+
+Step by step:
+
+1. `curl -L ... -o worldbanc.zip` — downloads the file at that URL and saves it locally as `worldbanc.zip`. The `-L` flag tells `curl` to follow redirects (GitHub's archive links redirect before landing on the actual file), and `-o` sets the output filename.
+2. `unzip worldbanc.zip` — extracts the archive's contents into a new `worldbanc-main` directory (GitHub zip archives are named `<repo>-<branch>`).
+3. `rm worldbanc.zip` — the zip itself is no longer needed once extracted, so it gets cleaned up.
+4. `mv worldbanc-main worldbanc` — renames the extracted directory to the shorter, branch-agnostic `worldbanc`.
