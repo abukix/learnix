@@ -1042,3 +1042,14 @@ important.txt -> documents/important.txt
 ## Top
 
 `top` shows which programs are using the most resources on the computer — the command-line equivalent of Windows' Task Manager or macOS's Activity Monitor. It's a go-to for diagnosing performance issues, both on a local machine and on remote servers.
+
+## Interrupt
+
+Sometimes a program gets stuck and needs to be stopped. Common causes:
+
+- A typo in the command, so it's not doing what was intended.
+- It's trying to reach the internet, but there's no connection.
+- It's chewing through too much data to wait out.
+- A bug is causing it to hang.
+
+**Ctrl+C** stops the program in these cases — it sends a **SIGINT** ("signal interrupt") telling the program to stop.
