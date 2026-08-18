@@ -1003,3 +1003,38 @@ man ls
 # press 'n' to jump to the next result
 # press 'N' to go back if you went too far
 ```
+
+## Symbolic Links
+
+A symbolic link — "symlink" for short — is a special file that points to another file or directory, similar to a shortcut in a GUI. The symlink has its own path, but using it just makes the OS follow the link to whatever it's pointing at.
+
+**The `ln` command** — creates links; the `-s` flag makes it a symbolic one:
+
+```bash
+ln -s target_path link_path
+```
+
+The target path comes first, then the path where the symlink itself gets created — easy to get backwards. For example:
+
+```bash
+ln -s documents/important.txt important.txt
+```
+
+This creates a symlink named `important.txt` in the current directory, pointing at `documents/important.txt`.
+
+**Relative vs. absolute target** — a relative target path is resolved from the *symlink's* location, not from wherever `ln` was run. Each has a tradeoff:
+
+- **Absolute path** — the symlink can be moved freely without breaking, but moving the target breaks it.
+- **Relative path** — keeps working as long as the symlink's position *relative to* the target stays the same (e.g. moving a parent directory that contains both together is fine).
+
+**Symlinks vs. copies** — a symlink is not a copy. It doesn't duplicate the file's contents, just adds another path pointing at the original:
+
+- Target file changes → the symlink reflects the new contents (there's nothing separate to go stale).
+- Symlink deleted → the target file is untouched.
+- Target file deleted → the symlink breaks (points at nothing).
+
+`ls -l` reveals where a symlink points:
+
+```
+important.txt -> documents/important.txt
+```
