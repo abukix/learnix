@@ -1053,3 +1053,21 @@ Sometimes a program gets stuck and needs to be stopped. Common causes:
 - A bug is causing it to hang.
 
 **Ctrl+C** stops the program in these cases — it sends a **SIGINT** ("signal interrupt") telling the program to stop.
+
+## Kill
+
+Sometimes a program is stuck badly enough (or malicious enough) that it ignores SIGINT. The fix then is a separate shell session (a new terminal window) used to manually kill it.
+
+**Syntax:**
+
+```bash
+kill <PID>
+```
+
+A **PID** ("process ID") is a unique number every running process on the machine gets assigned. The `ps` ("process status") command lists running processes along with their PIDs:
+
+```bash
+ps aux
+```
+
+`aux` here isn't one flag but three combined — it means "show every process, including ones owned by other users, plus extra detail about each."
