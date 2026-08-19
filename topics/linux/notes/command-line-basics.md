@@ -1139,3 +1139,25 @@ On a personal machine, day-to-day programming work mostly only cares about the "
 
 - Symbolic: `drwxr-xr-x`
 - Octal: `755`
+
+## Changing Permissions
+
+**The `chmod` command** — short for "change mode," changes the permissions of a file or directory:
+
+```bash
+chmod u=rwx,g=,o= some_file.txt
+```
+
+`u`, `g`, and `o` stand for "user" (owner), "group," and "others." `=` means "set the permissions to the following" — `u=rwx` sets owner permissions to read, write, and execute; `g=` and `o=` (nothing after the `=`) clear group and others permissions entirely.
+
+**Recursive** — the `-R` flag applies the change to a directory and everything inside it:
+
+```bash
+chmod -R u=rwx,g=,o= some_directory
+```
+
+As with other commands, `.` works as the alias for the current directory (see [2.14](#214-grep-multiple-files)):
+
+```bash
+chmod -R u=rwx,g=,o= .
+```
