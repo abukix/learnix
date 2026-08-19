@@ -1250,3 +1250,7 @@ macOS has no "default" package manager; the most popular (unofficial) one is **H
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
+
+## Using Neovim
+
+Not a full course on Neovim — just enough to edit a file and exit the program. Exiting Vim (or Neovim) without already knowing how is a notorious rite of passage for developers.
