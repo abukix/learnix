@@ -1198,3 +1198,13 @@ Most systems block this by default, but running it with `sudo` bypasses that pro
 ## Should I Use sudo?
 
 Yes, as long as the command being run is actually understood first. Just be careful.
+
+## Chown
+
+`chmod` only changes permissions on files or directories already owned by the current user. Changing the *owner* of a file or directory not owned by the current user is where `sudo` becomes necessary.
+
+**The `chown` command** — short for "change owner," changes the owner of a file or directory, and requires root privileges:
+
+```bash
+sudo chown new_owner some_directory
+```
