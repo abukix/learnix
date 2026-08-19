@@ -1180,3 +1180,21 @@ chmod +x conquerworld.sh
 ```
 
 **Danger** — only make executable (and run) scripts from publishers and authors that are trusted; the internet is a shady place.
+
+## Root User
+
+The "root" user is a superuser with access to everything on the system, able to do anything. Running a command with `sudo` runs it as root (assuming the system hasn't been configured otherwise).
+
+`sudo` is convenient because it quickly grants elevated permissions for a single command, but that same power makes it dangerous — running a command with `sudo` without understanding what it does can cause serious damage.
+
+For example, `rm` with the `r` (recursive) and `f` (force) flags, run against the root directory (`/`), deletes every file on the system:
+
+```bash
+sudo rm -rf /
+```
+
+Most systems block this by default, but running it with `sudo` bypasses that protection and destroys the system. Some modern systems require an explicit `--no-preserve-root` flag on top of that as an extra safeguard — but reaching for that flag is still a very bad idea.
+
+## Should I Use sudo?
+
+Yes, as long as the command being run is actually understood first. Just be careful.
