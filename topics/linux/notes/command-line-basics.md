@@ -1104,3 +1104,38 @@ Running a command with `sudo` runs it as the root superuser instead, so `whoami`
 sudo whoami
 # root
 ```
+
+## Permissions
+
+Permissions control who can do what to a given file or directory. They're visually represented as a 10-character string, e.g.:
+
+```
+drwxrwxrwx
+```
+
+**First character** — whether the entry is a file or a directory:
+
+- `-` — regular file (e.g. `-rwxrwxrwx`)
+- `d` — directory (e.g. `drwxrwxrwx`)
+
+**Remaining 9 characters** — three groups of 3, one each for "owner," "group," and "others," in that order. Each group of 3 represents read, write, and execute, in that order:
+
+- `rwx` — all permissions
+- `rw-` — read and write, but not execute
+- `r-x` — read and execute, but not write
+
+- **Owner** (first 3 characters) — usually the user who created the file or directory, though it can be changed manually.
+- **Group** (next 3 characters) — Unix-like systems support groups of users, and each file or directory belongs to exactly one owning group. Not usually a concern outside of system administration.
+- **Others** (last 3 characters) — everyone who is neither the owner nor a member of the owning group.
+
+On a personal machine, day-to-day programming work mostly only cares about the "owner" permissions, since that's usually the only user. Full examples:
+
+- `-rwxrwxrwx` — a file where everyone can do everything
+- `-rwxr-xr-x` — a file where everyone can read and execute, but only the owner can write
+- `drwxr-xr-x` — a directory where everyone can read (`ls` the contents) and execute (`cd` into it), but only the owner can write (modify the contents)
+- `drwx------` — a directory where only the owner can read, write, and execute
+
+**Symbolic vs. octal** — the `rwx` string form is the "symbolic" notation; permissions can also be written as a 3-digit "octal" number, one digit per owner/group/others group. For example, an owner with full read/write/execute and group/others with only read+execute is:
+
+- Symbolic: `drwxr-xr-x`
+- Octal: `755`
