@@ -1276,3 +1276,23 @@ A good package manager also tracks what's installed and at what version, keeping
 ```bash
 which nvim
 ```
+
+## Code Editors
+
+Boot.dev's in-browser editor and a standalone terminal have been the tools so far. Some developers work entirely inside a terminal with a terminal editor like Neovim; many others prefer a hybrid GUI/terminal experience instead.
+
+**Zed** — a fast, lightweight editor, easy to pick up as a beginner but powerful enough for professional use. Recommended for this course.
+
+Inline AI tab completion (e.g. GitHub Copilot) is best left off while still learning to code.
+
+Other popular GUI editors:
+
+- VS Code — the most widely used editor among developers today
+- Cursor
+- IntelliJ IDEA
+
+Other popular terminal editors:
+
+- Neovim
+- Vim
+- Emacs
