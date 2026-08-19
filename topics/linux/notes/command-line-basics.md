@@ -1254,3 +1254,25 @@ macOS has no "default" package manager; the most popular (unofficial) one is **H
 ## Using Neovim
 
 Not a full course on Neovim — just enough to edit a file and exit the program. Exiting Vim (or Neovim) without already knowing how is a notorious rite of passage for developers.
+
+## Package Manager Review
+
+APT and Brew aren't the only package managers out there — just two of the most popular, especially on Linux and macOS respectively.
+
+### How Does a Package Manager Work?
+
+Running an install command, e.g. `apt install neovim`, has the package manager:
+
+1. Check whether the package is already installed.
+2. If not installed, download the package from a repository.
+3. Install the package on the computer.
+4. Install any dependencies the package needs to run.
+5. Add the package to `PATH` (see [PATH](#path)), if it should be there.
+
+A good package manager also tracks what's installed and at what version, keeping the filesystem tidy rather than accumulating multiple installed copies of the same package.
+
+**Locating an installed package** — `which` (seen back in [The `which` Command](#the-which-command)) shows where the package manager put an executable on the filesystem:
+
+```bash
+which nvim
+```
