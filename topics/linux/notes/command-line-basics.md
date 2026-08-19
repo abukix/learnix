@@ -1071,3 +1071,21 @@ ps aux
 ```
 
 `aux` here isn't one flag but three combined — it means "show every process, including ones owned by other users, plus extra detail about each."
+
+# CH6: Permissions
+
+## Users
+
+Unix-like systems support multiple users. Each user has their own home directory, their own files, and their own permissions.
+
+Most machines these days only have one user. It used to be more common for multiple people to share a single computer, or for multiple people to do their work on the same computer over a network.
+
+## Sudo
+
+The `sudo` keyword runs a command as the root "superuser" — short for "superuser do." Using it requires the password of an account with superuser privileges, which is already the case for the only user on a machine.
+
+```bash
+sudo some_command
+```
+
+**Danger** — `sudo` grants unrestricted access, and can risk damaging the system when used carelessly. Any command should be understood before running it with `sudo`.
