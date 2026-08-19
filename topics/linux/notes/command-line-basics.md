@@ -1161,3 +1161,22 @@ As with other commands, `.` works as the alias for the current directory (see [2
 ```bash
 chmod -R u=rwx,g=,o= .
 ```
+
+## Making a Script Executable
+
+A script that's right there, with no typos, can still refuse to run:
+
+```bash
+$ ./conquerworld.sh
+bash: ./conquerworld.sh: Permission denied
+```
+
+That's a missing execute permission, not a bug in the code. The fix is `chmod +x`, adding the execute bit without having to spell out the full `u=rwx,g=,o=`-style permission set:
+
+```bash
+chmod +x conquerworld.sh
+./conquerworld.sh
+# it works!
+```
+
+**Danger** — only make executable (and run) scripts from publishers and authors that are trusted; the internet is a shady place.
