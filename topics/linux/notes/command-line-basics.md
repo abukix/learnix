@@ -1208,3 +1208,45 @@ Yes, as long as the command being run is actually understood first. Just be care
 ```bash
 sudo chown new_owner some_directory
 ```
+
+## Using Sudo
+
+Before an exercise involving `sudo`, it's worth sanity-checking the starting state of the file or directory in question — permissions, owner, and which user is currently signed in. **The `ls -l` command** (seen back in [Symbolic Links](#symbolic-links)) is the go-to check for permissions and ownership:
+
+```bash
+ls -l worldbanc/private/contacts
+```
+
+For example, before an exercise expecting `worldbanc/private/contacts` to be `drwx------`, owned by `root`, and the current user *not* signed in as `root`, `ls -l` confirms all three before proceeding.
+
+# CH7: Editors and Packages
+
+## Package Managers
+
+A package manager is a software tool that helps install other software. Its primary functions:
+
+- Downloading software from official sources
+- Installing software
+- Updating software
+- Removing software
+- Managing dependencies
+
+Package managers see frequent use as a developer, as the way to get access to whatever software is needed for the work at hand.
+
+### APT
+
+APT ("Advanced Package Tool") is the primary package manager for Ubuntu — other package managers can be used on Ubuntu too, but APT is the default and most common, and what WSL + Ubuntu setups use.
+
+Checking APT is installed:
+
+```bash
+apt --version
+```
+
+### Brew
+
+macOS has no "default" package manager; the most popular (unofficial) one is **Homebrew**. Installing it, if not already present:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
