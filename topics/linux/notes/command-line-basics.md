@@ -1089,3 +1089,18 @@ sudo some_command
 ```
 
 **Danger** — `sudo` grants unrestricted access, and can risk damaging the system when used carelessly. Any command should be understood before running it with `sudo`.
+
+## Whoami and Sudo
+
+**The `whoami` command** — prints the user currently logged in:
+
+```bash
+whoami
+```
+
+Running a command with `sudo` runs it as the root superuser instead, so `whoami` prefixed with `sudo` prints `root` rather than the logged-in user:
+
+```bash
+sudo whoami
+# root
+```
