@@ -44,7 +44,7 @@ If you're learning the same tools, treat this as a map: what's worth your time, 
 
 ## Currently learning
 
-- [ ] [Linux command line basics](topics/linux/) via boot.dev
+- [x] [Linux command line basics](topics/linux/) via boot.dev
 
 ## How it's organized
 
