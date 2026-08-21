@@ -1,24 +1,11 @@
-# Python: Party Manager
+# Python
 
-A 12-day evolving RPG-themed CLI project, built to make Python fundamentals stick before moving on to Linux. Each day adds one concept and leans on whatever the project already has — no throwaway scripts, no clean slate.
+Where Python fundamentals stop being facts I can recognize and start being muscle memory.
 
-Companion to the boot.dev course notes in [`topics/python/notes/python-basics.md`](../../topics/python/notes/python-basics.md); this is where those concepts get exercised, not just written down.
+Companion to the course notes in [`topics/python/notes/`](../../topics/python/notes/) — this is where those concepts get exercised, not just written down.
 
-## Progress
+## Tiers
 
-- [x] Day 1 — Character sheet (variables & types, f-strings)
-- [x] Day 2 — Functions (`create_character`, `describe_character`)
-- [x] Day 3 — Scope (the `PARTY_GOLD` bug, then the fix)
-- [x] Day 4 — Roster loop (`list[dict]`, loops)
-- [ ] Day 5 — Roster operations (add/remove/sort/filter, no mutation)
-- [ ] Day 6 — Inventory & quest log (dictionaries)
-- [ ] Day 7 — Locations & coordinates (sets & tuples)
-- [ ] Day 8 — Battle logic (comparisons, boolean logic)
-- [ ] Day 9 — Custom exceptions (`InsufficientGoldError`, `ItemNotFoundError`)
-- [ ] Day 10 — Retrofit type hints across everything
-- [ ] Day 11 — Hand-rolled test harness (no pytest)
-- [ ] Day 12 — Capstone simulation + written recap per concept
-
-## Notes
-
-Each `dayNN_*.py` file is self-contained but imports from prior days where it makes sense, the same way the project would actually grow. Whatever clicked, broke, or finally made sense goes here as I go.
+- [Beginner](beginner/) — small toy projects, one concept or a tight cluster at a time.
+- [Intermediate](intermediate/) — a smaller real project chaining a few concepts together.
+- [Advanced](advanced/) — the Party Manager: one evolving RPG-themed CLI, grown day by day.
