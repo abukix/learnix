@@ -4,7 +4,7 @@ Small, self-contained scripts. Each one should be completable in a sitting and t
 
 ## Ideas
 
-- [ ] Calculator — arithmetic operators, functions, input parsing
+- [x] Calculator — arithmetic operators, functions, input parsing
 - [ ] Quiz game — lists/dicts of questions, loops, score tracking
 - [ ] Tic-tac-toe — 2D state (list of lists or dict), win-condition logic, loops
 - [ ] Weather CLI — functions, f-strings, (later) working with an external API

@@ -25,30 +25,33 @@ doing math with it.
 
 
 def add(a, b):
-    # TODO
-    pass
+    return a + b
 
 
 def subtract(a, b):
-    # TODO
-    pass
+    return a - b
 
 
 def multiply(a, b):
-    # TODO
-    pass
+    return a * b
 
 
 def divide(a, b):
-    # TODO
-    pass
+    return a / b
 
 
 def main():
-    # TODO: call each function above with example numbers and print the
-    # results
-    pass
-
+    a = float(input("Enter first value: "))
+    b = float(input("Enter second value: "))
+    add_result = add(a, b)
+    subtract_result = subtract(a, b)
+    multiply_result = multiply(a, b)
+    divide_result = divide(a, b)
+    print("----------------------------------------------------------------")
+    print(f"The sum of {a} and {b} is equal to {add_result}")
+    print(f"The subtraction of {a} and {b} is equal to {subtract_result}")
+    print(f"The multiplication of {a} and {b} is equal to {multiply_result}")
+    print(f"The division of {a} and {b} is equal to {divide_result}")
 
 if __name__ == "__main__":
     main()
