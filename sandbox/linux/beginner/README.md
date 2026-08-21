@@ -14,3 +14,17 @@ Small, self-contained shell scripts. Each one should be completable in a sitting
 - [ ] Process control drill — background a throwaway process (`sleep 100 &`), find it with `ps`/`top`, kill it with `kill`/an interrupt; safe because the target process does nothing but sleep
 - [ ] Shell customization drill — add an alias to shell config, confirm a new session picks it up, use `man` to look up a command's docs
 - [ ] Exit code / error handling drill — check `$?` after commands, exit non-zero on failure, `&&`/`||` short-circuiting, redirecting stdout vs. stderr separately
+
+## Suggested order
+
+Matches these drills to the course chapter that teaches what each one needs, so review and practice stay paired instead of piling up at the end. Cross-reference: [`topics/linux/notes/command-line-basics.md`](../../../topics/linux/notes/command-line-basics.md).
+
+| After reviewing... | Build |
+|---|---|
+| CH2 (Filesystem) | File organizer, Log grep tool |
+| CH3 (Programs) | Environment inspector (PATH/env vars), Exit code / error handling drill |
+| CH4 (Input/Output) | reinforced by Log grep tool (piping) and the exit-code drill (stdout/stderr) — no new build |
+| CH5 (Local CLI) | Shell customization drill, Process control drill, File finder & symlink drill (needs CH2's `find` too — do it here once both CH2 and CH5 are covered) |
+| CH6 (Permissions) | Permissions playground |
+| CH7 (Editors and Packages) | Package checker/installer |
+| Synthesis, once the above are done | Backup script — combines `tar`/cron/permissions; good capstone before the intermediate System Health-Check project |
