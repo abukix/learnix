@@ -7,11 +7,11 @@ status: growing
 
 # Python cheat sheet — recall-ready
 
-Every concept from `python-basics.md` (CH1: Introduction → CH13: Type Hints), rewritten in one consistent card format so it can be read out loud like an interview answer instead of re-derived from prose. Each card: **What it is** → **Use case** → **Syntax** → **Gotcha** (a common trip-up, worth calling out unprompted if asked). Cards drilled so far also carry a **One-liner** — a single sentence that compresses the whole card, meant to be memorized verbatim as the fastest possible answer.
+Every concept from `python-basics.md` (CH1: Introduction → CH13: Type Hints), plus a handful of things picked up beyond the course notes (see the section near the end), rewritten in one consistent card format so it can be read out loud like an interview answer instead of re-derived from prose. Each card: **What it is** → **Use case** → **Syntax** → **Gotcha** (a common trip-up, worth calling out unprompted if asked). Cards drilled so far also carry a **One-liner** — a single sentence that compresses the whole card, meant to be memorized verbatim as the fastest possible answer.
 
 How to drill this: cover the card, say the "What it is" line from memory, then check. Getting the words different from what's written is fine — getting the *idea* wrong is the thing to catch.
 
-For the fuller narrative version of each lesson, see [python-basics.md](python-basics.md). For deep, project-specific gotchas (scope bugs, mutation semantics, etc.) traced line-by-line, see [python-glossary.md](python-glossary.md).
+For the fuller narrative version of each lesson, see [python-basics.md](python-basics.md). This file is meant to be self-contained — the trickiest concepts carry their own worked trace inline rather than pointing elsewhere.
 
 ---
 
@@ -426,6 +426,13 @@ For the fuller narrative version of each lesson, see [python-basics.md](python-b
 - **Syntax:** `car = {"brand": "Toyota", "year": 2019}`
 - **Gotcha:** Writing a key twice in a literal doesn't error — the *last* value silently wins: `{"brand": "Toyota", "brand": "Honda"}` → `{'brand': 'Honda'}`.
 
+### Dict literal: keys vs. values (a common mistake)
+
+- **One-liner:** In `{key: value}`, the key and value are two independent expressions evaluated on the spot — nothing ties a key's name to a matching variable automatically.
+- **What it is:** `{"name": name}` uses the string literal `"name"` as a fixed key and the variable `name`'s current contents as the value. Writing `{name: str}` instead uses whatever `name` currently holds *as* the key (so it'd change every call) and the type object `str` itself — not any actual data — as the value.
+- **Syntax:** Correct pattern for building a dict from existing variables: `{"label": variable}` — string literal on the left, bare variable on the right.
+- **Gotcha:** This bug doesn't raise an error — it just silently produces a dict with the wrong keys/values, which makes it especially easy to miss.
+
 ### Access, set, update, delete
 
 - **One-liner:** Square brackets read and write dict values by key (d["key"]), and del d["key"] removes an entry — reading or deleting a missing key raises KeyError.
@@ -525,6 +532,42 @@ For the fuller narrative version of each lesson, see [python-basics.md](python-b
 - **What it is:** The `|` operator marks a value as possibly being one of several types — most commonly "this type, or `None`."
 - **Use case:** A function that might not have anything to return (e.g. "no spell prepared") should say so in its signature.
 - **Syntax:** `damage_bonus: int | None` · `def get_prepared_spell(has_spell: bool) -> str | None: ...`
+
+---
+
+## Beyond the course notes
+
+Not taught in `python-basics.md`'s chapters, but common enough — and common enough in interviews — to belong here. Picked up while building the Party Manager project, not from the boot.dev lessons.
+
+### `__name__` and the `if __name__ == "__main__":` guard
+
+- **One-liner:** `__name__` is a variable Python sets automatically on every module before its code runs — `"__main__"` if the file was executed directly, or the module's filename if it was imported — and the guard uses that to let a file work as both a standalone script and a safely-importable module.
+- **What it is:** `__name__` is set the instant a module loads, before any of that module's own code runs; you never assign it yourself. The guard is just a plain string comparison against that pre-set value — it doesn't cause or set anything, it only reads.
+- **Use case:** Writing a file that can be run directly (`python main.py`) *and* imported elsewhere (`import main`) without the import accidentally re-running the whole script.
+- **Syntax:**
+  ```python
+  def main():
+      print("running")
+
+  if __name__ == "__main__":
+      main()
+  ```
+  Running this file directly prints `"running"`. Importing it from another file does not — `__name__` would be `"main"` (the module's filename), not `"__main__"`, so the guard's body never executes.
+- **Gotcha:** It's easy to assume the guard "does" something active — it doesn't. It's a passive read of a value Python already set before this line was ever reached.
+
+### `__pycache__/`
+
+- **One-liner:** A directory Python creates automatically on import to cache compiled bytecode (`.pyc` files), so re-importing an unchanged file skips recompiling from source.
+- **What it is:** A disk-level build artifact for import performance — not a runtime variable, and unrelated to `__name__` despite the similar dunder-style naming.
+- **Syntax:** Appears automatically wherever a module gets imported; standard practice is to add it to `.gitignore` and never commit it.
+- **Gotcha:** Seeing `__pycache__/` show up after running code isn't a bug or something you did wrong — it's expected, and safe to delete (Python just regenerates it).
+
+### `import X` vs. `from X import Y` vs. `from X import *`
+
+- **One-liner:** Three ways to pull code from one module into another — `import X` (access via `X.thing`, best when importing several things or names might collide), `from X import Y` (shorter direct calls, best for a small number of distinct names), and `from X import *` (wildcard — avoid, makes collisions and origins hard to trace).
+- **What it is:** `import X` keeps everything namespaced under `X.`; `from X import Y` pulls `Y` in directly by name; `from X import *` imports everything invisibly.
+- **Use case:** Choice depends on whether the names in play would collide — e.g. `import X` when multiple modules each define their own `main()`.
+- **Gotcha:** Two separate `from` imports that happen to pull in a same-named thing silently overwrite each other — the second one wins, with no warning.
 
 ---
 

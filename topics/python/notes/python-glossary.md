@@ -23,27 +23,7 @@ Optional syntax (`name: str = "JC"`, or `-> str` on a function) that documents t
 
 A string literal prefixed with `f` (`f"{name} | Lvl {level}"`) that lets you embed expressions directly inside `{}` braces; each one is evaluated and converted to text inline when the string is built. Whatever type the expression is (`int`, `bool`, `float`, ...), the result of the whole f-string is always a plain `str` — which is exactly why a function returning one should be type-hinted `-> str`, not a union of every type used inside it.
 
-### `__name__`
-
-A variable Python automatically sets on every module the instant it's loaded, before any of that module's own code runs. Its value is `"__main__"` if the file was executed directly, or the module's filename (no extension, no dunders) if it was imported by another file. You never assign it yourself.
-
-### `if __name__ == "__main__":`
-
-A guard that lets a file behave as both a standalone script and a safely-importable module. Code inside the block only runs when the file is executed directly — not when another file imports it — because it's just a plain string comparison against a value Python already set before this line was reached. It doesn't set or cause anything; it only reads.
-
-### `__pycache__/`
-
-A directory Python creates automatically on import to store compiled bytecode (`.pyc` files), so later imports of an unchanged file skip recompiling from source. Unrelated to `__name__` despite the similar dunder-style naming — it's a disk-level build artifact for import performance, not a runtime variable. Standard practice: add it to `.gitignore`, never commit it.
-
-### `import X` vs `from X import Y` vs `from X import *`
-
-Two real choices for pulling code from one module into another, plus one to avoid:
-
-- `import X` — access everything through `X.thing`. Preferred when importing several things from a module, or when names would otherwise collide (e.g. multiple modules each defining their own `main()`).
-- `from X import Y` — pulls `Y` in directly, shorter calls. Preferred for a small number of distinct names. Risk: two `from` imports that grab a same-named thing silently overwrite each other.
-- `from X import *` — wildcard, imports everything invisibly. Avoided in practice; makes collisions and origins hard to trace.
-
-Which to use isn't a fixed rule — it depends on whether the names in play would collide.
+> `__name__`, the `if __name__ == "__main__":` guard, `__pycache__/`, and the `import X` vs. `from X import Y` vs. `from X import *` choice all moved to [python-cheatsheet.md](python-cheatsheet.md)'s "Beyond the course notes" section on 2026-08-21 — same content, one home instead of two.
 
 ### Return type hints (`-> T`)
 
@@ -59,9 +39,7 @@ A function's parameters are placeholders that receive whatever values are passed
 
 `return` hands a value back to whatever called the function, so the caller decides what to do with it (print it, store it, pass it on). `print` just writes text to the screen and gives the caller `None` back. A function documented to *return* a formatted string must not print it internally — printing is the caller's job, done separately after the call.
 
-### Dict literal: keys vs. values
-
-In `{key: value}`, the key and value are two independent expressions evaluated on the spot — nothing ties a key's *name* to a value automatically. `{"name": name}` uses the string literal `"name"` as a fixed, repeatable key, and the variable `name`'s current contents as the value. Writing `{name: str}` instead uses whatever `name` currently holds as the key (so it'd change every call) and the type object `str` itself — not any actual data — as the value. The fix for building a dict from existing variables: `{"label": variable}` — string literal on the left, bare variable on the right.
+> The dict literal keys-vs-values mistake (`{name: str}` vs. `{"name": name}`) moved to [python-cheatsheet.md](python-cheatsheet.md)'s CH10 Dictionaries section on 2026-08-21.
 
 ### Dict key access (`d["key"]`)
 
@@ -77,41 +55,4 @@ Historically, an f-string couldn't reuse its own quote character inside its `{}`
 
 ## Day 3 — Scope
 
-### Scope
-
-The region of code where a variable name is visible and resolvable. Python has (roughly) two levels in play here: **local** — names created inside a function, alive only during that call — and **global** — names created at module level, alive as long as the module is loaded. A function can *read* a global without any special syntax; *writing* to one is where the rules get sharp.
-
-### Local-variable detection is a compile-time decision
-
-Before a function ever runs, Python scans its source for assignment targets — anything shaped like `name = ...`, `name -= ...`, `for name in ...`, `with ... as name`, etc. If `name` is assigned anywhere in the function body, it's treated as **local for the entire function**, on every line, even lines written above the assignment. This scan happens once, at compile time, by looking at the syntax — not by simulating execution.
-
-### `UnboundLocalError`
-
-Raised when a function reads a name that's been classified local (because it's assigned somewhere in the function) before that name has actually been assigned *in this call*. The local variable "exists" as a reserved slot the moment the function is compiled, but the slot stays empty ("unbound") until its assignment line actually executes. Reading an empty slot is the crash — distinct from `NameError`, which is what you get for a name that isn't recognized as existing anywhere at all.
-
-**Concretely** (from `sandbox/python/day03_scope.py`):
-
-```python
-PARTY_GOLD = 100
-
-def spend_gold_broken(amount):
-    PARTY_GOLD -= amount   # desugars to: PARTY_GOLD = PARTY_GOLD - amount
-    return PARTY_GOLD
-```
-
-The `PARTY_GOLD = ...` on that line (hidden inside the `-=`) is enough to make `PARTY_GOLD` local for the whole function — so the *read* half of `PARTY_GOLD - amount` looks in the local slot, finds it unbound, and crashes. The module-level `PARTY_GOLD = 100` is never consulted; it's shadowed by the local classification regardless of execution order.
-
-### Compound assignment (`-=`, `+=`, etc.) still counts as assignment
-
-`x -= y` is shorthand for `x = x - y` — it both reads and writes `x`, but the part that matters for scope classification is the write. A bare expression like `x - y` (no `=` at all) never assigns anything, so it never triggers local classification — it just reads whatever `x` already resolves to (local if already local, global otherwise).
-
-### `global` keyword
-
-A declaration (`global PARTY_GOLD`) placed inside a function that overrides the default local-classification rule: assignments to that name inside the function now write to the module-level variable instead of creating a local one. Necessary only when a function needs to *mutate* a global in place; not needed for reading one.
-
-### Return-and-reassign vs. `global` mutation
-
-Two ways to let a function "update" module-level state:
-
-- **`global` + in-place mutation** — function writes directly to the global; caller doesn't need to do anything extra, but the function now has a hidden side effect that isn't visible from its signature.
-- **Return the new value, reassign at the call site** (`PARTY_GOLD = spend_gold(PARTY_GOLD, 10)`) — function stays a pure calculator (same inputs always produce the same output, no hidden writes), and the mutation is explicit and visible at the call site instead of buried inside the function. Generally preferred: easier to test in isolation, easier to reason about from the call site alone.
+> The full Day 3 scope writeup (local vs. global, compile-time local-variable detection, `UnboundLocalError`, compound assignment, `global`, return-and-reassign vs. in-place mutation) moved to [python-cheatsheet.md](python-cheatsheet.md)'s CH4 Scope card on 2026-08-21, with the `PARTY_GOLD` trace inlined there directly. That card's example previously pointed at `sandbox/python/day03_scope.py`, which no longer exists after the sandbox reset — the cheat sheet's version is self-contained and doesn't depend on that file.
