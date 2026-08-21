@@ -97,6 +97,22 @@ For the fuller narrative version of each lesson, see [python-basics.md](python-b
 - **Use case:** Predicting whether a function can silently alter data you passed into it, and whether two variables pointing at "the same" value will see each other's changes.
 - **Syntax:** `a = [1, 2]; b = a; b.append(3)` → `a` is now `[1, 2, 3]` too (same list object, two labels). `a = "hi"; b = a; b += "!"` → `a` is still `"hi"` (strings are immutable, `b` now points at a *new* string).
 - **Gotcha:** `variable = value` always rebinds the label to a (possibly new) object and never edits one in place. Mutating *methods* (`.append()`, `.sort()`, `d[k] = x`) reach into the object a variable currently points at and edit it directly. Two variables referencing the same mutable object both see mutations, but neither sees the other's reassignments.
+- **Trace it:**
+  ```python
+  a = [1, 2]
+  b = a
+  b.append(3)
+  print(a)   # [1, 2, 3] — b = a made b a second label on the SAME list;
+             # .append() mutates that shared object, so both labels see it
+
+  a = "hi"
+  b = a
+  b += "!"
+  print(a)   # "hi" — strings are immutable, so b += "!" can't edit the
+             # string a points to; it builds a brand-new "hi!" and only
+             # rebinds b to it. a still points at the original.
+  ```
+  The dividing line: `variable = value` always rebinds a label to a (possibly new) object. Only mutating *methods*, on *mutable* objects, reach into an existing object and change it.
 
 ### `None`
 
@@ -180,7 +196,20 @@ For the fuller narrative version of each lesson, see [python-basics.md](python-b
   def get_area(radius):
       return pi * radius * radius  # reads the global `pi` fine
   ```
-- **Gotcha:** Reading a global from inside a function needs nothing special — but *writing* to one does (see `global` keyword, [python-glossary.md](python-glossary.md) for the full `UnboundLocalError` trace). A parameter (`x` in `def f(x): ...`) is local to that function; trying to read `x` outside it raises `NameError`.
+- **Gotcha:** Reading a global from inside a function needs nothing special — but *writing* to one does (the `global` keyword). A parameter (`x` in `def f(x): ...`) is local to that function; trying to read `x` outside it raises `NameError`.
+- **Trace it:**
+  ```python
+  PARTY_GOLD = 100
+
+  def spend_gold(amount):
+      PARTY_GOLD -= amount   # desugars to: PARTY_GOLD = PARTY_GOLD - amount
+      return PARTY_GOLD
+
+  spend_gold(10)   # UnboundLocalError!
+  ```
+  Before this function ever runs, Python scans its body for assignment targets. `PARTY_GOLD -= amount` contains an assignment to `PARTY_GOLD`, so Python classifies `PARTY_GOLD` as **local for the entire function** — on every line, even the read half of that same line. The local slot exists but is empty ("unbound") until its assignment line actually executes, so the *read* crashes first. The module-level `PARTY_GOLD = 100` is never consulted; it's shadowed by the local classification regardless of where the assignment sits.
+
+  Fix — either declare it global: `global PARTY_GOLD` at the top of the function (writes go straight to the global, no local created); or don't mutate a global at all: return the new value and reassign at the call site — `PARTY_GOLD = spend_gold(PARTY_GOLD, 10)` — which is usually the better habit, since it keeps the function a pure calculator instead of hiding a side effect.
 
 ---
 
@@ -237,7 +266,7 @@ For the fuller narrative version of each lesson, see [python-basics.md](python-b
 - **One-liner:** Compound operators like += read a variable's current value, apply an operation, and reassign the result — all in one step.
 - **What it is:** Shorthand that reads a variable's current value, applies an operation, and reassigns the result — in place of writing it out longhand.
 - **Syntax:** `score += 1` is shorthand for `score = score + 1`
-- **Gotcha:** It still counts as a full assignment for scope purposes — inside a function, `x -= 1` makes `x` local for the *entire function body*, even lines above it (see [python-glossary.md](python-glossary.md) `UnboundLocalError` note).
+- **Gotcha:** It still counts as a full assignment for scope purposes — inside a function, `x -= 1` makes `x` local for the *entire function body*, even lines above it. Full trace of this exact failure mode in the CH4 Scope card above.
 
 ### Logical operators: `and`, `or`, `not`
 
