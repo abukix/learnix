@@ -13,3 +13,4 @@
 
 - [Python basics](notes/python-basics.md)
 - [Python glossary](notes/python-glossary.md)
+- [Python cheat sheet](notes/python-cheatsheet.md)
