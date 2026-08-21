@@ -1,14 +1,14 @@
-# Backend Development (boot.dev path)
+# boot.dev — Backend Developer path
 
-**Resources used:** boot.dev — [Backend Developer path](https://www.boot.dev/paths/backend?tech=python-golang)
-**Cert status:** —
+- **Link:** https://www.boot.dev/paths/backend?tech=python-golang
+- **Covers:** the full 23-course Backend Developer path (Python → Go), from language basics through a capstone project.
 
-Tracks the full 23-course path. Concept notes for each technology live in their own topic folder, linked below — this page is the index and progress tracker, not where notes get written.
+Course-by-course progress through the path. Concept notes for each technology live in their own topic folder under [`topics/`](../topics/), linked below — this page is the index, not where notes get written.
 
 ## Progress
 
-- [x] 1. Learn Python for Beginners → [`topics/python/`](../python/)
-- [ ] 2. Learn Linux → [`topics/linux/`](../linux/)
+- [x] 1. Learn Python for Beginners → [`topics/python/`](../topics/python/)
+- [x] 2. Learn Linux → [`topics/linux/`](../topics/linux/)
 - [ ] 3. Build a BookBot in Python
 - [ ] 4. Learn Git → `topics/git/`
 - [ ] 5. Learn Object Oriented Programming in Python

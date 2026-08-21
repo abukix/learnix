@@ -1,6 +1,6 @@
 # Resource ledger
 
-Every course, book, and platform I've used to learn, with an honest rating so future-me (and anyone else) knows what was worth it.
+Every course, book, and platform used to learn what's in this repo, with an honest rating — so any learner deciding where to spend their time (future-me included) knows what was worth it.
 
 | Resource | Platform | Topic | Cost | Rating | Status | Notes |
 |----------|----------|-------|------|--------|--------|-------|
@@ -8,3 +8,5 @@ Every course, book, and platform I've used to learn, with an honest rating so fu
 
 **Status:** `queued` · `in-progress` · `completed` · `abandoned`
 **Rating:** 1/5-5/5
+
+**Path breakdown:** [boot.dev — Backend Developer path](boot.dev-path.md)
