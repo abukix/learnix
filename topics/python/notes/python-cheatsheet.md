@@ -553,7 +553,20 @@ Not taught in `python-basics.md`'s chapters, but common enough — and common en
       main()
   ```
   Running this file directly prints `"running"`. Importing it from another file does not — `__name__` would be `"main"` (the module's filename), not `"__main__"`, so the guard's body never executes.
-- **Gotcha:** It's easy to assume the guard "does" something active — it doesn't. It's a passive read of a value Python already set before this line was ever reached.
+- **Gotcha:** It's easy to assume the guard "does" something active — it doesn't. It's a passive read of a value Python already set before this line was ever reached. It's also not literally required on every file — a file with only `def` statements and no top-level calls has nothing to protect. It's near-universal best practice anyway, because you rarely know in advance which of your files will get imported by something else later.
+- **Trace it:**
+  ```python
+  # risky.py — no guard around the real work
+  def say_hello():
+      print("Hello!")
+
+  say_hello()   # called at the top level, unguarded
+
+  # other_file.py
+  import risky   # I only wanted to reuse something from risky later —
+                  # I never asked for "Hello!" to print
+  ```
+  Running `python other_file.py` prints `"Hello!"` anyway — `import risky` runs `risky.py` top to bottom once, and `say_hello()` isn't inside any guard, so it fires regardless of who's asking. Fix: wrap the call, not the definition — `if __name__ == "__main__": say_hello()`. Convention takes this one step further: put the "real work" inside one `main()` function, and let the guard's whole body just be `main()` — that way an importer can still call `main()` themselves *on purpose* (`from risky import main`), it just doesn't fire *automatically* on import.
 
 ### `__pycache__/`
 
