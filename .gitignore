@@ -11,6 +11,7 @@ Thumbs.db
 # Misc
 *.log
 .env
+scratch.md
 
 # Python
 __pycache__/
