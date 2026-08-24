@@ -42,24 +42,24 @@ LOOT = [10, 15, 5, 50]
 
 
 def announce_encounters(monsters):
-    for i in range(len(monsters) - 1):
+    for i in range(len(monsters)):
         print(f"Encounter: {monsters[i]}")
 
 
 def add_gold(amount):
+    global GOLD
     GOLD += amount
     return GOLD
 
 
 def boss_defeated(boss_name):
-    if boss_name = "Dragon":
+    if boss_name == "Dragon":
         return True
     return False
 
 
 def sorted_copy(monsters):
-    monsters.sort()
-    return monsters
+    return sorted(monsters)
 
 
 def main():
