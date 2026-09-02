@@ -1,4 +1,4 @@
-# Scratch Notes — CH1-CH5
+# Scratch Notes — CH1-CH6
 
 ## CH1: Introduction
 
@@ -61,3 +61,33 @@ Console-output checks compare printed text exactly. Unit tests is a separate tes
 ### What is Debugging
 
 Debugging means writing a small piece of code, printing to verify it does what you expect, and repeating in small steps. Never writing a large block blind an debugging it all at once.
+
+## CH6: Computing
+
+### What is Computing
+
+Computing is the manipulation of data through arithmetic and logical operations. Under the hood, a computer only ever stores and moves data as binary(`0`s and `1`s), so every number, comparison, and boolean check a program runs eventually breaks down into bits being combined by circuits.
+
+### What is Integer and Float
+
+Integer is a whole number, positive or negative, with no decimal point(`3`, `-3`). Float is a number that carries a decimal point(`3.0`, `-3.5`). Dividing two integers with `/` always produces a float, even when the result is a whole number(`4 / 2` is `2.0`, not `2`).
+
+### What is Floor Division and Exponents
+
+Floor division(`//`) divides then rounds the result down to the nearest integer, not toward zero, so `-7 // 3` is `-3`, not `-2`. Exponents use `**`, Python's built-in stand-in for the math `^` notation(`3**2` is `9`).
+
+### What is Changing in Place
+
+Changing a variable based on its own current value(`score = score + 1`) works because the right-hand side is evaluated first using the old value, then the result is stored back into the same name. The `+=`, `-=`, `*=`, `/=` operators are shorthand for this exact pattern, e.g. `score += 1` instead of `score = score + 1`.
+
+### What is Scientific Notation
+
+Scientific notation writes very large or very small floats using `e`/`E` followed by an exponent, where the exponent tells how many places to shift the decimal point(right if positive, left if negative): `16e3` is `16000.0`, `7.1e-2` is `0.071`. Underscores can also be dropped into large number literals as a readability separator with no effect on the value(`16_000` is `16000`).
+
+### What is Logical Operators (and, or, not)
+
+`and` returns `True` only if both sides are `True`. `or` returns `True` if at least one side is `True`. `not` flips a boolean to its opposite. Nested expressions in parentheses evaluate innermost-first, same as in math.
+
+### What is Binary Numbers and Bitwise Operators
+
+Binary is base-2, using only `0` and `1`, where each digit's place value doubles moving left(ones, twos, fours, eights). Python writes a binary literal with a `0b` prefix(`0b0101` is `5`). Bitwise `&` and `|` apply `and`/`or` logic column-by-column across the bits of two numbers(`0b0101 & 0b0111` is `5`, `0b0101 | 0b0010` is `0b0111`), rather than treating the whole number as one boolean.
