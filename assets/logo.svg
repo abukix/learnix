@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150" fill="none" role="img" aria-label="learnix — open book mark">
+  <!--
+    Color notes:
+    gold + bronze covers — knowledge as something worth extracting/valuing,
+    fitting a repo that's a ledger of what was worth the time.
+    emerald bookmark — the one non-metal color on purpose: green sits
+    opposite gold/bronze on the wheel, so it's what actually pops against
+    them. Its job is purely functional, marking where you left off.
+  -->
+  <rect width="150" height="150" rx="24" fill="#0a0a0f"/>
+
+  <!-- left cover: gold -->
+  <path d="M75 50 C 62 44, 42 44, 31 50 C 29 51, 28 53, 28 55 L28 94 C 28 97, 30 99, 33 98 C 45 93, 62 93, 75 99 Z" fill="#eab308"/>
+  <!-- right cover: bronze -->
+  <path d="M75 50 C 88 44, 108 44, 119 50 C 121 51, 122 53, 122 55 L122 94 C 122 97, 120 99, 117 98 C 105 93, 88 93, 75 99 Z" fill="#b45309"/>
+
+  <!-- spine -->
+  <line x1="75" y1="50" x2="75" y2="103" stroke="#0a0a0f" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- page lines -->
+  <g stroke="#fef9e7" stroke-width="2" stroke-linecap="round" opacity="0.85">
+    <path d="M37 60 L67 67"/>
+    <path d="M37 70 L67 77"/>
+    <path d="M37 80 L67 87"/>
+    <path d="M113 60 L83 67"/>
+    <path d="M113 70 L83 77"/>
+    <path d="M113 80 L83 87"/>
+  </g>
+
+  <!-- bookmark: emerald accent -->
+  <path d="M70 44 L70 20 L80 20 L80 44 L75 38 Z" fill="#059669"/>
+</svg>
