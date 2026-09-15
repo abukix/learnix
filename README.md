@@ -1,0 +1,59 @@
+<div align="center">
+
+<img src="assets/logo.svg" alt="learnix open book mark" width="120">
+
+# `learnix`
+
+**A living archive of how I level up in cloud, DevOps, and platform engineering, in the open.**
+
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-blue.svg)](LICENSE)
+![Learning in public](https://img.shields.io/badge/learning-in%20public-3fb950.svg)
+![Maintained](https://img.shields.io/badge/status-actively%20maintained-brightgreen.svg)
+
+</div>
+
+---
+
+## What this is
+
+`learnix` documents the resources I use to learn: courses, books, docs, hands-on labs, and what I actually took away from each. Part honest resource review, part certification tracker.
+
+If you're learning the same tools, treat this as a map: what's worth your time, what to skip, and the notes that made a concept finally click.
+
+## What you'll find
+
+| Section | What's inside |
+|---------|---------------|
+| **[Topics](topics/)** | Notes organized by subject: the concepts, distilled into my own words. |
+| **[Certifications](certifications/)** | Study plans, practice logs, and post-exam retros for the certs I chase. |
+| **[Resource ledger](resources/)** | Every course and book I've used, with an honest rating and whether it was worth it. |
+
+## Who it's for
+
+- **Learners** deciding which course or cert path is worth the investment.
+- **Anyone** who finds a clear explanation more useful than a marketing blurb.
+- **Future me**, six months from now, trying to remember how this all worked.
+
+## How this fits with my other repos
+
+- **`learnix`** *(here)*: external resources and honest reviews. What I *studied*.
+- **[`katas`](https://github.com/abukix/katas)**: a single roadmap of coding exercises. What I *practiced*.
+- **[`/root`](https://github.com/corestratum/root)**: self-authored 5-arc curriculum, now developed under the `corestratum` org. What I *designed to build*.
+- **[`basecamp`](https://github.com/corestratum/basecamp)**: the open-source platform `/root` produces, also under `corestratum`. What I *built*.
+
+## Currently learning
+
+- [x] [Python basics](topics/python/) via boot.dev
+- [x] [Linux command line basics](topics/linux/) via boot.dev
+
+## How it's organized
+
+Everything here is `evergreen`: distilled notes anchored to **topics**, not a running timeline of rough drafts. Scratch notes and study logs stay local until they're worth keeping. The durable, production-ready operational bits eventually graduate into my private ops journal, not published here.
+
+## About
+
+Maintained by **JC Abucay**, [@abukix](https://github.com/abukix). Notes are drawn strictly from public sources; nothing here comes from any employer's internal systems or work.
+
+## License
+
+Content is licensed under [**CC BY 4.0**](LICENSE). You're free to use, share, and adapt it, as long as you give credit.
