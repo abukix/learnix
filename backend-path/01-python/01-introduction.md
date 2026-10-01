@@ -4,7 +4,7 @@ Source: boot.dev Learn Python, Chapter 1, Lessons 1 to 11.
 
 ## What it is
 
-### What Python is
+### About Python
 
 Python is a high-level, general-purpose programming language created by Guido van Rossum and first released in 1991. A few traits define it:
 
