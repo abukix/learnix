@@ -1,6 +1,6 @@
 # 01: Introduction
 
-Source: boot.dev Learn Python, Chapter 1, Lessons 1 to 8.
+Source: boot.dev Learn Python, Chapter 1, Lessons 1 to 11.
 
 ## What it is
 
@@ -36,6 +36,19 @@ Syntax errors are the easiest to fix because the interpreter reports the exact l
 ### Test before deploying
 
 Running code locally costs nothing, while shipping broken code to users does. The habit to build is to run the code and check its output before submitting, merging, or deploying. Automated tests, CI pipelines, and staging environments are formal versions of the same habit.
+
+### Where Python fits
+
+Python is designed to be readable and quick to write, which makes it a common first language. Its simplicity does not limit it, and it is widely used in industry.
+
+| Strong fit | Weak fit |
+|---|---|
+| Backend web services and APIs | Frontend web development, because browsers run JavaScript |
+| DevOps, cloud automation, and infrastructure tooling | Mobile apps, which typically use Swift or Kotlin |
+| Data analysis and machine learning | Desktop graphical interfaces |
+| Scripting and task automation | CPU-intensive or latency-sensitive systems, where Go, Rust, or C++ are more common |
+
+Choosing a language is a tradeoff. Python favors developer speed and a large library ecosystem over raw execution speed.
 
 ## Analogy
 
@@ -111,6 +124,7 @@ The main takeaway is that languages differ in how early they catch mistakes. Go 
 3. What is the difference between an expression and a statement?
 4. How do you make sure code is safe to deploy?
 5. How do you debug a problem? When would you use `print`, a logger, or a debugger?
+6. Why Python, and when would you choose a different language?
 
 ## My answer
 
@@ -134,6 +148,10 @@ The main takeaway is that languages differ in how early they catch mistakes. Go 
 
 "I use `print` for quick checks while developing, when I only need to see a value. For anything that runs in a real environment I use the `logging` module, because logs have levels and timestamps and can be adjusted without changing the code. For harder problems I use a debugger, such as `pdb` or the one in my editor, so I can pause execution, inspect the state, and step through the code line by line."
 
+**6. Why Python, and when would you choose something else?**
+
+"Python's main strengths are readability and its ecosystem. Code is quick to write and easy for others to read, and there are mature libraries for almost everything: Django and FastAPI for web services, boto3 and Ansible for cloud and automation, and pandas and PyTorch for data work. The tradeoffs are speed and concurrency. Python is slower than compiled languages, and in the default CPython build the global interpreter lock prevents threads from running Python code in parallel. For CPU-heavy or latency-sensitive services, or for infrastructure tools that should ship as a single binary, I would consider Go or Rust. For browser frontends the standard is JavaScript or TypeScript, and for mobile it is Swift or Kotlin."
+
 **Points to recall**
 
 - Python compiles source code to bytecode, then interprets the bytecode.
@@ -141,6 +159,7 @@ The main takeaway is that languages differ in how early they catch mistakes. Go 
 - Expressions produce values. Statements perform actions.
 - Deploy safely in layers: local tests, linters, CI, code review, staging, monitoring.
 - Use `print` for quick checks, `logging` in real environments, and a debugger for difficult problems.
+- Python trades execution speed for readability and ecosystem. It is strong in backend, DevOps, data, and scripting, and weak in frontend, mobile, and CPU-heavy systems.
 
 ## Follow-up gotchas
 
@@ -152,6 +171,9 @@ Only typos that break the syntax. A misspelled variable name is still valid synt
 
 **Which is worse, a syntax error or a logic error?**
 A logic error. A syntax error stops the program and points to the exact line. A logic error runs successfully and returns a wrong result that someone has to notice.
+
+**What does `"10" + "20"` return?**
+`"1020"`, not `30`. Both values are strings, so `+` joins them as text instead of adding them. This causes real bugs because values from user input, files, and environment variables always arrive as strings. Convert them first: `int("10") + int("20")` returns `30`.
 
 **Why not debug everything with `print`?**
 Print statements have to be added and removed by hand, have no levels or timestamps, and cannot be turned off in production. Services use a logger instead, and a debugger allows inspecting state without modifying the code.
