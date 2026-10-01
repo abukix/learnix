@@ -1,18 +1,18 @@
-# Linux — Overview
+# Linux
 
-## Concepts to cover
+This course has not started yet. The topics below are a working plan and will be replaced by the course's chapter list once I begin.
 
-This list is a starting draft, not the source of truth — rename/add files as needed.
+Each chapter will have its own file, numbered to match the course and written using [`_TEMPLATE.md`](../../_TEMPLATE.md).
 
-- [ ] Filesystem hierarchy & navigation
-- [ ] Permissions & ownership (chmod, chown)
-- [ ] Processes & job control
-- [ ] Piping & redirection
-- [ ] grep/sed/awk basics
+## Planned topics
+
+- [ ] Filesystem hierarchy and navigation
+- [ ] Permissions and ownership (`chmod`, `chown`)
+- [ ] Processes and job control
+- [ ] Pipes and redirection
+- [ ] Text processing with `grep`, `sed`, and `awk`
 - [ ] Shell scripting fundamentals
-- [ ] Environment variables & shell config
+- [ ] Environment variables and shell configuration
 - [ ] Package management
-- [ ] Networking basics (ports, curl, ssh)
-- [ ] systemd / services
-
-One file per concept in this folder, using `../../_TEMPLATE.md` as the format.
+- [ ] Networking basics (ports, `curl`, `ssh`)
+- [ ] Services with `systemd`
