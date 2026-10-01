@@ -1,32 +1,42 @@
-# <Chapter Number>: <Chapter Name>
+# <Number>: <Chapter Name>
 
-> Source: <course>, Ch. <n>, L<first>–L<last>
+Source: <Course>, Chapter <n>, Lessons <first> to <last>.
 
-One file per chapter, organized by idea — not by lesson. Write about the concept, not the course's story or exercises.
+<!--
+One file per chapter, organized by concept rather than by lesson.
+Write about the concept itself, not the course's story or exercises.
+-->
 
 ## What it is
-Plain-English explanation, in my own words — not the textbook definition. One `###` per idea if the chapter covers several.
+
+A plain-language explanation of the concept. Use one `###` heading per idea when the chapter covers several.
 
 ## Analogy
-One real-world metaphor that makes the idea stick. Reuse the same metaphor across related chapters where it fits.
+
+A real-world comparison that makes the concept easy to remember. Reuse the same analogy across related chapters where it fits.
 
 ## Example
+
 ```python
-# minimal, working code I actually ran
+# Minimal, working code that has been run and verified.
 ```
 
 ## In other languages
-How the same idea looks elsewhere, so it transfers when I pick up a new language.
+
+How the same concept appears in other languages, so it carries over when learning a new one.
 
 | | Python | JavaScript | Go | Bash |
 |---|---|---|---|---|
 | | | | | |
 
 ## Interview framing
-How this concept tends to get asked in an interview (exact-ish phrasing). For basic chapters, go one level deeper than the lesson.
+
+How the concept is typically asked in an interview. For introductory chapters, go one level deeper than the lesson.
 
 ## My answer
-The talking-point version I'd say out loud — written by me, not generated.
+
+The answer I would give out loud, one per interview question, followed by a short list of points to recall.
 
 ## Follow-up gotchas
-The harder question that usually comes after the first answer.
+
+The harder questions that usually follow the first answer.
