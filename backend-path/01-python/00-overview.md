@@ -6,4 +6,4 @@ Each chapter has its own file, numbered to match the course and written using [`
 
 ## Chapters
 
-- [x] 01: Introduction
+- [ ] 01: Introduction
