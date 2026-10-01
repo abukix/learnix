@@ -1,87 +1,94 @@
 # 01: Introduction
 
-> Source: boot.dev Learn Python, Ch. 1, L1–L8
+Source: boot.dev Learn Python, Chapter 1, Lessons 1 to 8.
 
 ## What it is
 
-### A program is an ordered list of instructions
-Code is a list of instructions the computer carries out one at a time, **from the top down**. Order is part of the meaning: the same lines in a different order make a different program. Nothing runs "all at once" — when output comes out in the wrong order, the instructions are in the wrong order.
+### Programs run in order
 
-### Output is how a program talks back
-A program's work is invisible unless it shows you something. The simplest way is to write text to the **console** (the terminal, standard output). In Python that's `print()`. Printing is also the first debugging tool anyone uses: "what does the program think this value is right now?"
+A program is a list of instructions that the computer executes one at a time, from top to bottom. The order is part of the program's meaning. If output appears in the wrong order, the instructions are in the wrong order.
+
+### Output
+
+A program's work is invisible unless it produces output. The simplest form of output is text written to the console, also called standard output. In Python this is done with `print()`. Printing values is also the most basic debugging technique, because it shows what the program holds at a specific point.
 
 ### Values and expressions
-Programs work with **values**. The first two kinds you meet:
 
-- **Strings** — text, wrapped in quotes: `"hello"`
-- **Numbers** — no quotes: `42`
+Programs operate on values. The first two types of values are:
 
-The quotes matter. `40 + 2` is an **expression** — something Python calculates down to a single value (`42`) *before* using it. `"40 + 2"` is just text, printed exactly as written.
+- **Strings:** text enclosed in quotes, such as `"hello"`.
+- **Numbers:** written without quotes, such as `42`.
 
-### Syntax, and the three kinds of problems
-**Syntax** is the grammar of a language: the rules for how code has to be written so the language can read it. Every language has its own grammar, but the ideas are the same everywhere.
+An expression is any piece of code that evaluates to a single value. `40 + 2` is an expression that Python evaluates to `42` before passing it to `print()`. `"40 + 2"` is a string, so it is printed exactly as written.
 
-Code can go wrong in three broad ways:
+### Syntax and types of errors
 
-| Problem | Does it run? | Example |
+Syntax is the set of rules that defines how valid code is written in a language. Each language has its own syntax, but the underlying ideas are shared.
+
+| Error type | Does the program run? | Example |
 |---|---|---|
-| **Syntax error** | No — the language can't even read it | `print("hello)` — unclosed quote |
-| **Logic error (bug)** | Yes, but does the wrong thing | `health + damage` where you meant `health - damage` |
-| **Performance problem** | Yes, does the right thing, but too slowly | Checking every item in a huge list when a lookup would do |
+| Syntax error | No. The code cannot be parsed. | `print("hello)` has an unclosed quote. |
+| Logic error | Yes, but the result is wrong. | `health + damage` when `health - damage` was intended. |
+| Performance issue | Yes, and the result is correct, but it is too slow. | Scanning a large list item by item when a direct lookup would work. |
 
-Syntax errors are the cheapest kind: the language tells you exactly where they are. Logic errors are the expensive kind: nothing complains, the output is just wrong, and you have to notice.
+Syntax errors are the easiest to fix because the interpreter reports the exact location. Logic errors are harder because nothing fails. The output is simply incorrect, and someone has to notice it.
 
-### Run before you ship
-Running code to see what it does is free. Shipping it to users is not. So the habit is: run it, check the output, *then* submit, merge, or deploy. This is the seed of everything later — tests, CI, staging environments — which are all just "run it before real users do," automated.
+### Test before deploying
+
+Running code locally costs nothing, while shipping broken code to users does. The habit to build is to run the code and check its output before submitting, merging, or deploying. Automated tests, CI pipelines, and staging environments are formal versions of the same habit.
 
 ## Analogy
-**Code is a recipe; the computer is a very literal cook.**
 
-- The cook reads the recipe **one step at a time, top to bottom**, and does exactly what each step says. Swap two steps and you get a different dish.
-- **The console** is the serving window — the only way you see what came out of the kitchen.
-- **A syntax error** is a step the cook can't read at all ("Add 2 cups of"). Python's cook reads the *whole* recipe before starting, refuses an unreadable one, and cooks nothing.
-- **A logic error** is a step that's perfectly readable but wrong ("add salt" where you meant sugar). The cook follows it happily; you only find out when you taste the dish.
-- **A performance problem** is a recipe that works but takes six hours.
-- **Run before submit** is tasting before you serve.
+A program is a recipe, and the computer is a cook that follows instructions literally.
+
+- The cook reads one step at a time, from top to bottom. Changing the order of the steps changes the result.
+- The console is the serving window. It is the only place you can see what the kitchen produced.
+- A syntax error is a step the cook cannot read, such as "Add 2 cups of". Python reads the entire recipe before starting, so one unreadable step means nothing gets cooked.
+- A logic error is a step that is readable but wrong, such as "add salt" when sugar was intended. The cook follows it, and the problem only shows up when someone tastes the dish.
+- A performance issue is a recipe that produces the right dish but takes six hours.
+- Testing before deploying is tasting the dish before serving it.
 
 ## Example
+
 ```python
-# Instructions run top to bottom
+# Instructions run from top to bottom
 print("one")
 print("two")
 print("three")
 
-# Expression vs text: the quotes change everything
-print(40 + 2)       # 42      -- calculated first, then printed
-print("40 + 2")     # 40 + 2  -- just text
+# Expression versus string
+print(40 + 2)       # 42: evaluated first, then printed
+print("40 + 2")     # 40 + 2: printed as written
 
-# print() accepts several values, separated by spaces in the output
+# print() accepts several values and separates them with spaces
 print("Score:", 250 + 75)   # Score: 325
 
-# Logic error: runs fine, wrong answer
+# Logic error: the program runs, but the result is wrong
 health = 100
 damage = 30
-health = health + damage    # bug: should be health - damage
-print(health)               # 130 -- no error, just wrong
+health = health + damage    # Bug: should be health - damage
+print(health)               # 130
 ```
 
-And the difference in *when* errors show up — two files, both with a problem on line 2:
+The two files below each have a problem on line 2, but they fail at different times.
 
 ```python
 # syntax.py
 print("first line")
 print("broken)          # SyntaxError: unterminated string literal
-# Output: only the error. "first line" never prints —
-# Python reads the whole file before running any of it.
+
+# Output: only the error. "first line" is never printed,
+# because Python parses the whole file before running any of it.
 ```
 
 ```python
 # typo.py
 print("first line")
 print(scroe)            # NameError: name 'scroe' is not defined
-# Output: "first line", then the error.
-# This is valid grammar — Python only finds out the name doesn't exist
-# when it reaches that line.
+
+# Output: "first line", followed by the error.
+# The line is grammatically valid, so Python only discovers
+# that the name does not exist when it reaches that line.
 ```
 
 ## In other languages
@@ -90,25 +97,61 @@ print(scroe)            # NameError: name 'scroe' is not defined
 |---|---|---|---|---|
 | Print a line | `print("hi")` | `console.log("hi")` | `fmt.Println("hi")` | `echo hi` |
 | Run a file | `python3 app.py` | `node app.js` | `go run main.go` | `bash script.sh` |
-| End of a statement | Newline | `;` or newline | Newline | Newline or `;` |
-| Text in quotes | `"…"` or `'…'`, same thing | `"…"`, `'…'`, or `` `…` `` | `"…"` only (`'a'` is a single character) | `"…"` fills in variables, `'…'` doesn't |
-| Syntax error on line 2 — does line 1 run? | No | No | No | **Yes** |
-| Misspelled name on line 2 — does line 1 run? | Yes, then crashes | Yes, then crashes | **No** — rejected before running | Yes (empty value, often no error) |
+| End of a statement | Newline | Semicolon or newline | Newline | Newline or semicolon |
+| String quotes | `"..."` and `'...'` are equivalent | `"..."`, `'...'`, or `` `...` `` | `"..."` only; `'a'` is a single character | `"..."` expands variables; `'...'` does not |
+| Syntax error on line 2: does line 1 run? | No | No | No | Yes |
+| Misspelled name on line 2: does line 1 run? | Yes, then it fails | Yes, then it fails | No. It is rejected at compile time. | Yes. The name expands to an empty value, usually without an error. |
 
-The last two rows are the transferable idea: **languages differ in how early they catch mistakes.** Go checks the most up front; Python and JavaScript catch grammar early but names late; Bash runs line by line and catches very little. The earlier a language catches a mistake, the fewer reach users.
+The main takeaway is that languages differ in how early they catch mistakes. Go checks the most before the program runs. Python and JavaScript check syntax up front but only resolve names at runtime. Bash executes line by line and checks very little. The earlier a language catches a mistake, the fewer mistakes reach users.
 
 ## Interview framing
-- "Is Python compiled or interpreted? What actually happens when you run `python app.py`?"
-- "What kinds of errors can a program have? When does Python catch each one?"
-- "What's the difference between an expression and a statement?"
-- "How do you make sure code is safe to deploy?"
-- "How do you debug something? When would you use `print` vs a logger vs a debugger?"
+
+1. Is Python compiled or interpreted? What happens when you run `python app.py`?
+2. What kinds of errors can a program have, and when does Python catch each one?
+3. What is the difference between an expression and a statement?
+4. How do you make sure code is safe to deploy?
+5. How do you debug a problem? When would you use `print`, a logger, or a debugger?
 
 ## My answer
-> _To write: say each of the interview questions above out loud, then write the version I'd actually give._
+
+**1. Is Python compiled or interpreted?**
+
+"Both, in a way. When I run `python app.py`, CPython first compiles the source code into bytecode, which is a simpler set of instructions. The Python virtual machine then executes that bytecode one instruction at a time. So the interpreted part is the execution, not the reading of the source file. You can see this in practice: if a file has a syntax error on line 50, line 1 never runs, because the compile step fails before anything executes."
+
+**2. What kinds of errors can a program have?**
+
+"I group them into four. Syntax errors break the language's grammar, and Python catches them at compile time, before any code runs. Runtime errors happen in valid code while it is running, such as a `NameError` from a misspelled variable or a `TypeError` from adding a string to a number. Python only catches those when it reaches the line. Logic errors are the hardest, because the program runs without complaint and simply produces the wrong result. Nothing catches those automatically except tests. Finally, performance issues are cases where the result is correct but the code is too slow."
+
+**3. Expression versus statement?**
+
+"An expression is anything that evaluates to a value, such as `40 + 2`, a string, or a function call. A statement is a complete instruction that performs an action, such as an assignment, an `if` block, or a `return`. Statements often contain expressions. A quick test is whether it can go on the right-hand side of an equals sign. If it can, it is an expression."
+
+**4. How do you make sure code is safe to deploy?**
+
+"By catching problems as early as possible, in layers. Locally, I run the code and the tests before I push. Linters and type checkers such as `ruff` and `mypy` catch mistakes that Python would otherwise only find at runtime. In CI, the same checks run automatically on every pull request, and code review adds a second person. The change then goes to a staging environment that mirrors production. If something still gets through, monitoring and a fast rollback limit the impact."
+
+**5. How do you debug?**
+
+"I use `print` for quick checks while developing, when I only need to see a value. For anything that runs in a real environment I use the `logging` module, because logs have levels and timestamps and can be adjusted without changing the code. For harder problems I use a debugger, such as `pdb` or the one in my editor, so I can pause execution, inspect the state, and step through the code line by line."
+
+**Points to recall**
+
+- Python compiles source code to bytecode, then interprets the bytecode.
+- A syntax error stops the entire file. A runtime error stops at the line where it occurs.
+- Expressions produce values. Statements perform actions.
+- Deploy safely in layers: local tests, linters, CI, code review, staging, monitoring.
+- Use `print` for quick checks, `logging` in real environments, and a debugger for difficult problems.
 
 ## Follow-up gotchas
-- **"If Python is interpreted, why doesn't line 1 run when line 5 has a syntax error?"** — CPython first compiles the whole file to bytecode, then runs the bytecode. Grammar is checked during that compile step, so one syntax error anywhere stops the whole file. "Interpreted" describes how the bytecode is run, not that it reads source one line at a time.
-- **"So does Python catch typos before running?"** — Only grammar typos. A misspelled variable name is valid grammar, so it's a runtime error (`NameError`) that only appears if that line actually runs. A typo in a branch that rarely runs can hide for months — one reason tests and linters (`ruff`, `mypy`) matter in Python more than in Go.
-- **"Which is worse, a syntax error or a logic error?"** — A logic error. A syntax error stops the program and points at the line. A logic error runs successfully and returns a wrong answer that someone has to notice.
-- **"Why not just debug with `print`?"** — It's fine for quick checks, but prints have to be added and removed by hand, have no levels or timestamps, and can't be switched off in production. Real services use a logger (`logging`), and a debugger lets you pause and inspect without changing the code.
+
+**If Python is interpreted, why doesn't line 1 run when line 5 has a syntax error?**
+CPython compiles the whole file to bytecode before running it, and syntax is checked during that step. A single syntax error anywhere in the file prevents all of it from running. "Interpreted" describes how the bytecode is executed, not that the source is read one line at a time.
+
+**Does Python catch typos before running?**
+Only typos that break the syntax. A misspelled variable name is still valid syntax, so it becomes a runtime error (`NameError`) that only appears if that line runs. A typo inside a rarely used branch can go unnoticed for a long time. This is one reason tests and linters matter more in Python than in a compiled language like Go.
+
+**Which is worse, a syntax error or a logic error?**
+A logic error. A syntax error stops the program and points to the exact line. A logic error runs successfully and returns a wrong result that someone has to notice.
+
+**Why not debug everything with `print`?**
+Print statements have to be added and removed by hand, have no levels or timestamps, and cannot be turned off in production. Services use a logger instead, and a debugger allows inspecting state without modifying the code.
