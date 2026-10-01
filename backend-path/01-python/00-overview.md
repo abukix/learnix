@@ -1,20 +1,7 @@
 # Python — Overview
 
-## Concepts to cover
+Following boot.dev's Learn Python course. One file per chapter, numbered to match the course, using `../../_TEMPLATE.md` as the format. Chapters are added here as I reach them.
 
-This list is a starting draft, not the source of truth — rename/add files as needed.
+## Chapters
 
-- [ ] Variables & types
-- [ ] Control flow (if/else, loops)
-- [ ] Functions & scope
-- [ ] Lists, tuples, dicts, sets
-- [ ] String manipulation
-- [ ] Error handling (try/except)
-- [ ] File I/O
-- [ ] OOP basics (classes, inheritance)
-- [ ] Comprehensions
-- [ ] Decorators & generators
-- [ ] Modules & packages
-- [ ] Testing basics
-
-One file per concept in this folder, using `../../_TEMPLATE.md` as the format.
+- [ ] 01 — Introduction

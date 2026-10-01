@@ -8,8 +8,9 @@ Curriculum notes copy-pasted from a course are cheap to make and useless to revi
 
 ## Structure
 
-- `backend-path/` — one folder per course, one file per concept (not per curriculum page)
-- Every concept file follows `_TEMPLATE.md`: **What it is → Example → Interview framing → My answer → Follow-up gotchas**
+- `backend-path/` — one folder per course, one file per **chapter**, organized by idea rather than by lesson
+- Notes are generalized: the course's story and exercises are left out, and each idea is compared with other languages so it carries over
+- Every chapter file follows `_TEMPLATE.md`: **What it is → Analogy → Example → In other languages → Interview framing → My answer → Follow-up gotchas**
 
 ## Progress
 
