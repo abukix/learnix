@@ -8,3 +8,4 @@ Each chapter has its own file, numbered to match the course and written using [`
 
 - [x] 01: Introduction
 - [x] 02: Variables and Types
+- [ ] 03: Functions
