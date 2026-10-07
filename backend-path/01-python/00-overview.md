@@ -10,3 +10,4 @@ Each chapter has its own file, numbered to match the course and written using [`
 - [x] 02: Variables and Types
 - [x] 03: Functions
 - [x] 04: Scope
+- [ ] 05: Testing and Debugging
