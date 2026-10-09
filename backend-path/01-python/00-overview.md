@@ -13,3 +13,4 @@ Each chapter has its own file, numbered to match the course and written using [`
 - [x] 05: Testing and Debugging
 - [x] 06: Computing
 - [x] 07: Comparisons
+- [ ] 08: Loops
