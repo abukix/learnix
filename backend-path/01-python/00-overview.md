@@ -14,3 +14,4 @@ Each chapter has its own file, numbered to match the course and written using [`
 - [x] 06: Computing
 - [x] 07: Comparisons
 - [x] 08: Loops
+- [ ] 09: Lists
