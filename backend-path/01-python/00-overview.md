@@ -15,4 +15,4 @@ Each chapter has its own file, numbered to match the course and written using [`
 - [x] 07: Comparisons
 - [x] 08: Loops
 - [x] 09: Lists
-- [ ] 10: Dictionaries
+- [x] 10: Dictionaries
