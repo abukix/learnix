@@ -16,3 +16,4 @@ Each chapter has its own file, numbered to match the course and written using [`
 - [x] 08: Loops
 - [x] 09: Lists
 - [x] 10: Dictionaries
+- [ ] 11: Sets
