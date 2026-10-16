@@ -17,3 +17,4 @@ Each chapter has its own file, numbered to match the course and written using [`
 - [x] 09: Lists
 - [x] 10: Dictionaries
 - [x] 11: Sets
+- [ ] 12: Errors
